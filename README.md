@@ -1,6 +1,5 @@
 # tjbot-nodered-flows
-Contains node-red flows created to show Watson services to students using TJBot
-
+## node-red flows created to show Watson services to students using TJBot
 
 ## Bienvenida (welcome)
  
@@ -22,23 +21,22 @@ Flow dependencies:
 
 ## Dime IP (give my IP)
 
-The purpose of this flow is explained above. The flow is designed so that the audio message reporting the IP address can be repeated several times (by default it is only played once) to help the student taking note of the IP address. This introduces the use of variables and the "for loop" in JavaScript. 
-
-<img src="images/02.dime.ip.jpg" width="100%">
+The purpose of this flow is explained above. The flow is designed so that the audio message reporting the IP address can be repeated several times (by default it is only played once) to give additional opportunities to the student taking note of the IP address. It also introduces the use of variables and the "for loop" in JavaScript. 
 
 Flow dependencies:
 * [espeak](http://espeak.sourceforge.net/)(see above)
+
+<img src="images/02.dime.ip.jpg" width="100%">
 
 ## Mover brazo (move arm)
 
 This flow shows how to move TJBot's arm (servomotor). In this and other flows we use Jean Carl TJBot's nodes (see "dependencies" section). They are very robust and easy to use. 
 The flow can be activated manually using the "inject" node, or it can also be accessed via web (ex: http://127.0.0.1:1880/mueve ). This introduces the "http in", "template" and "http response" nodes with a very simple example.
 
-<img src="images/03.mover.brazo.jpg" width="100%">
-
 Flow dependencies:
 * [Jean Carl's node-red-contrib-tjbot](https://github.com/jeancarl/node-red-contrib-tjbot): node "tjbot-wave"
 
+<img src="images/03.mover.brazo.jpg" width="100%">
 
 ## S. Hawking
 
@@ -46,10 +44,10 @@ This flow is a test bench to play with command invocation using espeak to synthe
 
 It also shows options to reproduce audio to a USB speaker or a bluetooth one.
 
-<img src="images/05.s.hawking.jpg" width="100%">
-
 Flow dependencies:
 * [espeak](http://espeak.sourceforge.net/)(see above)
+
+<img src="images/05.s.hawking.jpg" width="100%">
 
 ## Loro (parrot)
 
@@ -62,43 +60,52 @@ Flow dependencies:
 
 ## LED test 
 
-This flow 
+This flow is basically one of the examples from Jean Carl. It sets a color on the LED and then after a few seconds it turns it off. 
 
 Flow dependencies:
-* [Jean Carl's node-red-contrib-tjbot](https://github.com/jeancarl/node-red-contrib-tjbot): nodes "tjbot-listen" and "tjbot-speak"
+* [Jean Carl's node-red-contrib-tjbot](https://github.com/jeancarl/node-red-contrib-tjbot): nodes "tjbot-shine"
 
 <img src="images/07.led.test.jpg" width="100%">
 
 ## LED voz (LED controlled via voice) 
 
-This flow 
+This flow listens to the color request (in Spanish) and then set the LED color accordingly. The flow combines Speech to Text and Language Translation to translate the color name from Spanish to English.
+
+Flow dependencies:
+* [Jean Carl's node-red-contrib-tjbot](https://github.com/jeancarl/node-red-contrib-tjbot): nodes "tjbot-listen", "tjbot-translate" and "tjbot-shine"
 
 <img src="images/08.led.voz.jpg" width="100%">
 
 ## Reconocimiento de imagen (image recognition) 
 
-This flow 
+This flow is also one of the examples from Jean Carl. It takes a photo using the Raspberry camera and analyzes it using Watson Visual Recognition.
+
+Flow dependencies:
+* [Jean Carl's node-red-contrib-tjbot](https://github.com/jeancarl/node-red-contrib-tjbot): node "tjbot-see"
 
 <img src="images/09.reco.imagen.jpg" width="100%">
 
 ## Hacer una foto (take a photo)
 
-This flow 
+This flow implements a web page that takes a photo using the Raspberry camera and then displays it on the same page.
+Visit http://127.0.0.1:1880/foto (or the raspberry IP address).
+
+Flow dependencies:
+* [Jean Carl's node-red-contrib-tjbot](https://github.com/jeancarl/node-red-contrib-tjbot): nodes "tjbot-wave"
 
 <img src="images/10.hacer.foto.jpg" width="100%">
 
 ## Conversación (conversation)
 
-This flow 
+This is the most complex flow of the series. It mimics the way "smart speakers" (like Amazon Echo or Google Home) works. 
+It performs hotword ("Hola, tjbot") detection locally on the raspberry. When the hotword is detected, it carries out a conversation using Watson services: Speech to Text, Watson Assistant and Text to Speech. 
+The flow is explained in one of the presentations and the students learn how to customize the conversation to their own needs.
+
+Flow dependencies:
+* [node-red-contrib-micropi](https://flows.nodered.org/node/node-red-contrib-micropi). It allows recording and streaming audio from an usb microphone connected to a Raspberry Pi in Node-Red.
+* [node-red-contrib-snowboy](https://flows.nodered.org/node/node-red-contrib-snowboy). A customizable hotword detection engine for you to create your own hotword like "OK Google" or "Alexa".
+* [Jean Carl's node-red-contrib-tjbot](https://github.com/jeancarl/node-red-contrib-tjbot): node "tjbot-wave", "tjbot-listen", "tjbot-speak", "tjbot-shine" and "tjbot-converse"
 
 <img src="images/12.conversa.jpg" width="100%">
-
-
-
-**Item 1** This is item 1
-
-**Item 2:** 
-
-* [Link to my ibm web page](https://www.ibm.com)
 
 
