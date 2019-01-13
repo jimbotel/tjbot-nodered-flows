@@ -1,0 +1,956 @@
+[
+    {
+        "id": "3f427d3d.28fa3a",
+        "type": "tjbot-converse",
+        "z": "cc5cd94d.fc1da8",
+        "botId": "e551859e.787188",
+        "name": "",
+        "x": 520,
+        "y": 500,
+        "wires": [
+            [
+                "7acd1c56.aad6c4",
+                "c416266a.2b1c68"
+            ]
+        ]
+    },
+    {
+        "id": "b208e0b9.316f88",
+        "type": "debug",
+        "z": "cc5cd94d.fc1da8",
+        "name": "dialogo",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 900,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "96400f6d.f93438",
+        "type": "tjbot-listen",
+        "z": "cc5cd94d.fc1da8",
+        "botId": "e551859e.787188",
+        "name": "",
+        "x": 330,
+        "y": 500,
+        "wires": [
+            [
+                "3f427d3d.28fa3a",
+                "81e36aa6.e39be8",
+                "2ad1da0b.1ce546"
+            ]
+        ]
+    },
+    {
+        "id": "81e36aa6.e39be8",
+        "type": "debug",
+        "z": "cc5cd94d.fc1da8",
+        "name": "reconocido",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 550,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "339ee0f2.2adc88",
+        "type": "inject",
+        "z": "cc5cd94d.fc1da8",
+        "name": "",
+        "topic": "",
+        "payload": "stop",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 90,
+        "y": 400,
+        "wires": [
+            [
+                "254280de.15cdd"
+            ]
+        ]
+    },
+    {
+        "id": "2ad1da0b.1ce546",
+        "type": "function",
+        "z": "cc5cd94d.fc1da8",
+        "name": "pausa",
+        "func": "msg.reset = 1;\nmsg.mode = \"pause\";\nmsg.color = \"Black\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 580,
+        "wires": [
+            [
+                "96400f6d.f93438",
+                "11296da3.5b9f0a",
+                "993b4c45.a13398"
+            ]
+        ]
+    },
+    {
+        "id": "9d259448.7fe938",
+        "type": "function",
+        "z": "cc5cd94d.fc1da8",
+        "name": "sigue",
+        "func": "// if( msg.response.object.intents[0].intent == \"Adios\") {\n// if( msg.response.object.output.nodes_visited[0] == \"Bienvenido\") {\nif( msg.response.object.context.nodo == \"bienvenido\") {\n    msg.mode = \"start\"; \n    msg.color = \"Green\";\n} \n//else if( msg.response.object.output.nodes_visited[0] == \"Adios\") {\nelse if( msg.response.object.context.nodo == \"adios\") {\n    msg.mode = \"stop\";\n    msg.motion = \"wave\";\n    msg.color = \"Black\";\n}\nelse {\n    msg.mode = \"resume\";\n    msg.color = \"Green\";\n}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1070,
+        "y": 500,
+        "wires": [
+            [
+                "67b03cbd.c9746c",
+                "ccf3313f.5e196",
+                "5b147b4f.ea218c"
+            ]
+        ]
+    },
+    {
+        "id": "b08da717.70b8d",
+        "type": "http request",
+        "z": "cc5cd94d.fc1da8",
+        "name": "inicializa",
+        "method": "POST",
+        "ret": "obj",
+        "url": "",
+        "tls": "",
+        "x": 560,
+        "y": 280,
+        "wires": [
+            [
+                "a3a288ad.705a1",
+                "af8f7064.6b7eb"
+            ]
+        ]
+    },
+    {
+        "id": "a3a288ad.705a1",
+        "type": "debug",
+        "z": "cc5cd94d.fc1da8",
+        "name": "texto inicial",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 730,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "254280de.15cdd",
+        "type": "change",
+        "z": "cc5cd94d.fc1da8",
+        "name": "mode stop",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mode",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 400,
+        "wires": [
+            [
+                "96400f6d.f93438"
+            ]
+        ]
+    },
+    {
+        "id": "7acd1c56.aad6c4",
+        "type": "debug",
+        "z": "cc5cd94d.fc1da8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "response",
+        "x": 760,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "c416266a.2b1c68",
+        "type": "function",
+        "z": "cc5cd94d.fc1da8",
+        "name": "une respuestas",
+        "func": "msg.payload = msg.response.object.output.text.join(\" \");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 720,
+        "y": 500,
+        "wires": [
+            [
+                "b208e0b9.316f88",
+                "94b55651.35187"
+            ]
+        ]
+    },
+    {
+        "id": "94b55651.35187",
+        "type": "tjbot-speak",
+        "z": "cc5cd94d.fc1da8",
+        "botId": "e551859e.787188",
+        "mode": "speak",
+        "payload": "",
+        "name": "",
+        "x": 930,
+        "y": 500,
+        "wires": [
+            [
+                "d6b5b6ef.78ebf8",
+                "9d259448.7fe938"
+            ]
+        ]
+    },
+    {
+        "id": "af8f7064.6b7eb",
+        "type": "function",
+        "z": "cc5cd94d.fc1da8",
+        "name": "respuesta",
+        "func": "msg.response = {};\nmsg.response.object = msg.payload;\nvar str1 = msg.payload.output.text.join(\" \");\nmsg.payload  = str1;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 720,
+        "y": 380,
+        "wires": [
+            [
+                "94b55651.35187"
+            ]
+        ]
+    },
+    {
+        "id": "349a4a3c.ee1f6e",
+        "type": "comment",
+        "z": "cc5cd94d.fc1da8",
+        "name": "Dependencias de este flujo: micropi, snowboy, tjbot",
+        "info": "Nodos necesarios para ejecutar este flujo\nque no vienen \"de serie\":\n--------------\nNodo \"Micro Pi\" (node-red-contrib-micropi)\nFormas de instalar: \n1) desde linea de comandos:\n  $ cd ~/.node-red\n  $ sudo npm install node-red-contrib-micropi\ny reiniciar el servicio Node-RED\n\n2) Instalarlo desde Node-RED (Manage palette)\n--------------\nNodo \"Snowboy\" (node-red-contrib-snowboy)\n\nOJO: antes, instalar atlas matrix computinglibrary:\n $ sudo apt-get -y install libatlas-base-dev\n(hace falta para snowboy)\n\nFormas de instalar: \n1) desde linea de comandos:\n  $ cd ~/.node-red\n  $ sudo npm install node-red-contrib-snowboy\ny reiniciar el servicio Node-RED\n\n2) Instalarlo desde Node-RED (Manage palette)\n--------------\n",
+        "x": 1110,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "85496520.806d08",
+        "type": "inject",
+        "z": "cc5cd94d.fc1da8",
+        "name": "Activa deteccion de hotword",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "20",
+        "x": 180,
+        "y": 160,
+        "wires": [
+            [
+                "ce2ed1df.a9936",
+                "d232b4be.76dff8"
+            ]
+        ]
+    },
+    {
+        "id": "315c4e3e.c3eb1a",
+        "type": "inject",
+        "z": "cc5cd94d.fc1da8",
+        "name": "Desactiva deteccion de hotword",
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 190,
+        "y": 200,
+        "wires": [
+            [
+                "162a2dfe.533c02"
+            ]
+        ]
+    },
+    {
+        "id": "3dade9b0.9ec516",
+        "type": "microPi",
+        "z": "cc5cd94d.fc1da8",
+        "name": "microPi",
+        "filename": "/dev/null",
+        "domain": "http://localhost:1880/getAudio",
+        "rate": "16000",
+        "bitwidth": "16",
+        "endian": "little",
+        "encoding": "signed-integer",
+        "channels": "1",
+        "silence": "4",
+        "debug": "false",
+        "mode": "",
+        "x": 700,
+        "y": 200,
+        "wires": [
+            [
+                "52e5cb16.27d82c"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "162a2dfe.533c02",
+        "type": "change",
+        "z": "cc5cd94d.fc1da8",
+        "name": "para",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "reset",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 850,
+        "y": 140,
+        "wires": [
+            [
+                "3dade9b0.9ec516",
+                "b5e131b0.9d3e08"
+            ]
+        ]
+    },
+    {
+        "id": "52e5cb16.27d82c",
+        "type": "Snowboy",
+        "z": "cc5cd94d.fc1da8",
+        "name": "Hola TJBot",
+        "detectorFile": "/home/pi/.node-red/node_modules/snowboy/resources/common.res",
+        "models": [
+            {
+                "idxOutput": 0,
+                "nbOutputs": 1,
+                "hotwords": "",
+                "sensitivity": "",
+                "file": "/home/pi/misetup/para.el.flujo.pmdl"
+            },
+            {
+                "idxOutput": 1,
+                "nbOutputs": 1,
+                "hotwords": "",
+                "sensitivity": "",
+                "file": "/home/pi/misetup/hola.tjbot.grabado.rpi.pmdl"
+            }
+        ],
+        "multipleOutput": "true",
+        "debug": "false",
+        "x": 870,
+        "y": 200,
+        "wires": [
+            [
+                "162a2dfe.533c02",
+                "780276c8.06d93",
+                "aefbe87d.e5a098"
+            ],
+            [
+                "162a2dfe.533c02",
+                "690cec2.0935894"
+            ]
+        ]
+    },
+    {
+        "id": "67b03cbd.c9746c",
+        "type": "link out",
+        "z": "cc5cd94d.fc1da8",
+        "name": "escucha",
+        "links": [
+            "ec41fab3.41dd1"
+        ],
+        "x": 1175,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "ec41fab3.41dd1",
+        "type": "link in",
+        "z": "cc5cd94d.fc1da8",
+        "name": "start",
+        "links": [
+            "67b03cbd.c9746c"
+        ],
+        "x": 135,
+        "y": 540,
+        "wires": [
+            [
+                "96400f6d.f93438",
+                "f0bbd66.fe79328",
+                "993b4c45.a13398"
+            ]
+        ]
+    },
+    {
+        "id": "780276c8.06d93",
+        "type": "debug",
+        "z": "cc5cd94d.fc1da8",
+        "name": "vacio",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1150,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "d6b5b6ef.78ebf8",
+        "type": "debug",
+        "z": "cc5cd94d.fc1da8",
+        "name": "dialogo",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 1080,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "11296da3.5b9f0a",
+        "type": "trigger",
+        "z": "cc5cd94d.fc1da8",
+        "op1": "",
+        "op2": "true",
+        "op1type": "nul",
+        "op2type": "bool",
+        "duration": "10",
+        "extend": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "name": "",
+        "x": 250,
+        "y": 740,
+        "wires": [
+            [
+                "fe3d5a88.9b2868",
+                "2ad1da0b.1ce546"
+            ]
+        ]
+    },
+    {
+        "id": "87682e35.1a8ae",
+        "type": "comment",
+        "z": "cc5cd94d.fc1da8",
+        "name": "si no reconoce nada en unos segundos, envía \"adios\"",
+        "info": "",
+        "x": 420,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "5d2c1efa.a10c1",
+        "type": "link in",
+        "z": "cc5cd94d.fc1da8",
+        "name": "hotword",
+        "links": [
+            "f817491c.ad984"
+        ],
+        "x": 435,
+        "y": 220,
+        "wires": [
+            [
+                "3dade9b0.9ec516",
+                "16815617.bbf2da"
+            ]
+        ]
+    },
+    {
+        "id": "ccf3313f.5e196",
+        "type": "function",
+        "z": "cc5cd94d.fc1da8",
+        "name": "activa hotword",
+        "func": "if( msg.mode == \"stop\") {\n    msg.payload = true;\n} else {\n    msg.payload = false;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1120,
+        "y": 340,
+        "wires": [
+            [
+                "f817491c.ad984"
+            ]
+        ]
+    },
+    {
+        "id": "f817491c.ad984",
+        "type": "link out",
+        "z": "cc5cd94d.fc1da8",
+        "name": "a hotword",
+        "links": [
+            "5d2c1efa.a10c1"
+        ],
+        "x": 1235,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "731f47e6.3de368",
+        "type": "debug",
+        "z": "cc5cd94d.fc1da8",
+        "name": "trigger",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 630,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "fe3d5a88.9b2868",
+        "type": "function",
+        "z": "cc5cd94d.fc1da8",
+        "name": "envia adios",
+        "func": "var newmsg = {};\nmsg = newmsg;\nmsg.payload = \"adios\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 430,
+        "y": 740,
+        "wires": [
+            [
+                "731f47e6.3de368",
+                "3f427d3d.28fa3a"
+            ]
+        ]
+    },
+    {
+        "id": "f0bbd66.fe79328",
+        "type": "switch",
+        "z": "cc5cd94d.fc1da8",
+        "name": "activa trigger",
+        "property": "mode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "start",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "resume",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 130,
+        "y": 640,
+        "wires": [
+            [
+                "11296da3.5b9f0a"
+            ],
+            [
+                "11296da3.5b9f0a"
+            ]
+        ]
+    },
+    {
+        "id": "7bb0f981.832248",
+        "type": "comment",
+        "z": "cc5cd94d.fc1da8",
+        "name": "si se reconoce adios, activa hotword",
+        "info": "",
+        "x": 1160,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "a8e31b33.a74308",
+        "type": "comment",
+        "z": "cc5cd94d.fc1da8",
+        "name": "si hay varias respuestas, las une",
+        "info": "",
+        "x": 690,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "ff33e96.2165f98",
+        "type": "comment",
+        "z": "cc5cd94d.fc1da8",
+        "name": "INDICAR AQUI EL WORKSPACE ID !!",
+        "info": "",
+        "x": 310,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "16e46ab9.7f2db5",
+        "type": "comment",
+        "z": "cc5cd94d.fc1da8",
+        "name": "detección de hotword",
+        "info": "",
+        "x": 940,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "92093fed.b7e138",
+        "type": "comment",
+        "z": "cc5cd94d.fc1da8",
+        "name": "parada manual",
+        "info": "",
+        "x": 100,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "6d35329f.abf5d4",
+        "type": "comment",
+        "z": "cc5cd94d.fc1da8",
+        "name": "parada manual",
+        "info": "",
+        "x": 120,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "ce2ed1df.a9936",
+        "type": "exec",
+        "z": "cc5cd94d.fc1da8",
+        "command": "/usr/bin/aplay",
+        "addpay": false,
+        "append": " /home/pi/audio/fraseinicial.wav",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "frase inicial",
+        "x": 370,
+        "y": 40,
+        "wires": [
+            [
+                "703cb156.8e1ca8"
+            ],
+            [
+                "703cb156.8e1ca8"
+            ],
+            [
+                "703cb156.8e1ca8"
+            ]
+        ]
+    },
+    {
+        "id": "703cb156.8e1ca8",
+        "type": "debug",
+        "z": "cc5cd94d.fc1da8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 590,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "8b4314c2.27b7",
+        "type": "comment",
+        "z": "cc5cd94d.fc1da8",
+        "name": "Inicio",
+        "info": "",
+        "x": 90,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "d232b4be.76dff8",
+        "type": "delay",
+        "z": "cc5cd94d.fc1da8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 400,
+        "y": 160,
+        "wires": [
+            [
+                "3dade9b0.9ec516",
+                "16815617.bbf2da",
+                "7d9347e9.bd7d"
+            ]
+        ]
+    },
+    {
+        "id": "7d9347e9.bd7d",
+        "type": "tjbot-wave",
+        "z": "cc5cd94d.fc1da8",
+        "botId": "e551859e.787188",
+        "motion": "wave",
+        "name": "Mover el brazo",
+        "x": 540,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "5795ccf7.b52d2c",
+        "type": "tjbot-shine",
+        "z": "cc5cd94d.fc1da8",
+        "botId": "e551859e.787188",
+        "mode": "shine",
+        "color": "msg.color",
+        "duration": "2",
+        "name": "Color",
+        "x": 610,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "5b147b4f.ea218c",
+        "type": "tjbot-wave",
+        "z": "cc5cd94d.fc1da8",
+        "botId": "e551859e.787188",
+        "motion": "msg.motion",
+        "name": "Mover el brazo",
+        "x": 1240,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "993b4c45.a13398",
+        "type": "function",
+        "z": "cc5cd94d.fc1da8",
+        "name": "color",
+        "func": "var str1 =msg.color;\nvar newmsg = {};\nmsg = newmsg;\nmsg.color = str1;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 450,
+        "y": 700,
+        "wires": [
+            [
+                "5795ccf7.b52d2c"
+            ]
+        ]
+    },
+    {
+        "id": "6f7e12e6.1ceb3c",
+        "type": "tjbot-shine",
+        "z": "cc5cd94d.fc1da8",
+        "botId": "e551859e.787188",
+        "mode": "pulse",
+        "color": "blue",
+        "duration": "1.5",
+        "name": "Pulso",
+        "x": 1270,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "9b4dfcc1.302c18",
+        "type": "debug",
+        "z": "cc5cd94d.fc1da8",
+        "name": "led intermitente",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 1160,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "16815617.bbf2da",
+        "type": "switch",
+        "z": "cc5cd94d.fc1da8",
+        "name": "activa trigger",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 710,
+        "y": 100,
+        "wires": [
+            [
+                "b5e131b0.9d3e08",
+                "57526ae2.8efedc"
+            ]
+        ]
+    },
+    {
+        "id": "b5e131b0.9d3e08",
+        "type": "trigger",
+        "z": "cc5cd94d.fc1da8",
+        "op1": "",
+        "op2": "true",
+        "op1type": "nul",
+        "op2type": "bool",
+        "duration": "10",
+        "extend": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "name": "luz intermitente",
+        "x": 940,
+        "y": 80,
+        "wires": [
+            [
+                "c6f72fed.25a14",
+                "57526ae2.8efedc",
+                "9b4dfcc1.302c18"
+            ]
+        ]
+    },
+    {
+        "id": "c6f72fed.25a14",
+        "type": "delay",
+        "z": "cc5cd94d.fc1da8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "0",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 940,
+        "y": 20,
+        "wires": [
+            [
+                "b5e131b0.9d3e08"
+            ]
+        ]
+    },
+    {
+        "id": "57526ae2.8efedc",
+        "type": "function",
+        "z": "cc5cd94d.fc1da8",
+        "name": "limpia",
+        "func": "var newmsg = {};\nmsg = newmsg;\nmsg.payload = true;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1130,
+        "y": 100,
+        "wires": [
+            [
+                "6f7e12e6.1ceb3c"
+            ]
+        ]
+    },
+    {
+        "id": "690cec2.0935894",
+        "type": "function",
+        "z": "cc5cd94d.fc1da8",
+        "name": "http request",
+        "func": "var workspaceid = \"6605538e-fa96-43c2-9387-b532e00f862e\";\nmsg.url = \"https://gateway.watsonplatform.net/assistant/api/v1/workspaces/\" + workspaceid + \"/message?version=2018-02-16&nodes_visited_details=true\";\nmsg.headers = { \"Accept\" : \"application/json\",  \"Content-Type\": \"application/json\" };\nmsg.payload = {\"input\":{\"text\":\"\"},\"context\":{\"timezone\":\"Europe/Madrid\"},\"alternate_intents\":true};\nreturn msg;\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "b08da717.70b8d"
+            ]
+        ]
+    },
+    {
+        "id": "370193b6.1ddcdc",
+        "type": "comment",
+        "z": "cc5cd94d.fc1da8",
+        "name": "Y AQUI USU / PASS DE ASSISTANT",
+        "info": "",
+        "x": 640,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "aefbe87d.e5a098",
+        "type": "exec",
+        "z": "cc5cd94d.fc1da8",
+        "command": "/usr/bin/aplay",
+        "addpay": false,
+        "append": " /home/pi/audio/parandoelflujo.wav",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "frase inicial",
+        "x": 1110,
+        "y": 160,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "e551859e.787188",
+        "type": "tjbot-config",
+        "z": "",
+        "botGender": "female",
+        "name": "TJBot",
+        "listen": "es-ES",
+        "speak": "es-ES",
+        "hasServo": true,
+        "hasLED": true,
+        "hasSpeaker": true,
+        "hasMicrophone": true,
+        "hasCamera": true,
+        "speakerDeviceId": "default",
+        "microphoneDeviceId": ""
+    }
+]

@@ -1,0 +1,165 @@
+[
+    {
+        "id": "1778fad6.39fb35",
+        "type": "exec",
+        "z": "904ce7f0.3183d8",
+        "command": "hostname -I | awk '{print $1}' | sed 's#\\.#, punto, #g' ",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "mira la IP",
+        "x": 580,
+        "y": 120,
+        "wires": [
+            [
+                "f102b2dd.9cdfd"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "dc3945fb.334868",
+        "type": "debug",
+        "z": "904ce7f0.3183d8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 670,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "48d1eaac.9bc4b4",
+        "type": "function",
+        "z": "904ce7f0.3183d8",
+        "name": "loop",
+        "func": "for (var i=0; i<(msg.payload); i++) {\n    node.send( {payload:\"\"} )\n}\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "d5730281.0b084"
+            ]
+        ]
+    },
+    {
+        "id": "d5730281.0b084",
+        "type": "delay",
+        "z": "904ce7f0.3183d8",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "12",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 400,
+        "y": 120,
+        "wires": [
+            [
+                "1778fad6.39fb35"
+            ]
+        ]
+    },
+    {
+        "id": "c0043f30.a5bce",
+        "type": "exec",
+        "z": "904ce7f0.3183d8",
+        "command": "espeak -v spanish ",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "espeak",
+        "x": 660,
+        "y": 240,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "f102b2dd.9cdfd",
+        "type": "function",
+        "z": "904ce7f0.3183d8",
+        "name": "mensaje",
+        "func": "if(! msg.payload.trim()) {\n    msg.payload = \"\\\"No encuentro la dirección I.P. de la wifi\\\"\";\n} else {\n    msg.payload = \"\\\"Mi dirección I.P. de wifi es: \" + msg.payload + \"\\\"\"; \n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 450,
+        "y": 240,
+        "wires": [
+            [
+                "c0043f30.a5bce",
+                "dc3945fb.334868"
+            ]
+        ]
+    },
+    {
+        "id": "ec0952a7.d278d",
+        "type": "change",
+        "z": "904ce7f0.3183d8",
+        "name": "num iters",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 100,
+        "y": 120,
+        "wires": [
+            [
+                "48d1eaac.9bc4b4"
+            ]
+        ]
+    },
+    {
+        "id": "69f08396.42775c",
+        "type": "link in",
+        "z": "904ce7f0.3183d8",
+        "name": "",
+        "links": [
+            "7774144c.824e6c"
+        ],
+        "x": 55,
+        "y": 40,
+        "wires": [
+            [
+                "ec0952a7.d278d"
+            ]
+        ]
+    },
+    {
+        "id": "be5c4503.83ce38",
+        "type": "comment",
+        "z": "904ce7f0.3183d8",
+        "name": "Dice la dirección IP principal de TJBot",
+        "info": "",
+        "x": 280,
+        "y": 40,
+        "wires": []
+    }
+]

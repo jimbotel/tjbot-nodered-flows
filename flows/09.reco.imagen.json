@@ -1,0 +1,81 @@
+[
+    {
+        "id": "70a3752b.69f3cc",
+        "type": "tjbot-see",
+        "z": "bca5952c.cefe28",
+        "botId": "e551859e.787188",
+        "mode": "see",
+        "verticalFlip": false,
+        "horizontalFlip": false,
+        "width": 960,
+        "height": 720,
+        "name": "ver objeto",
+        "x": 400,
+        "y": 200,
+        "wires": [
+            [
+                "3cdb18c8.206a48"
+            ]
+        ]
+    },
+    {
+        "id": "7a47f9c.fb13b08",
+        "type": "inject",
+        "z": "bca5952c.cefe28",
+        "name": "Instruccion ver objeto",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 200,
+        "y": 200,
+        "wires": [
+            [
+                "70a3752b.69f3cc"
+            ]
+        ]
+    },
+    {
+        "id": "3cdb18c8.206a48",
+        "type": "debug",
+        "z": "bca5952c.cefe28",
+        "name": "objetos identificados",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 620,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "3f329a4b.4a9526",
+        "type": "comment",
+        "z": "bca5952c.cefe28",
+        "name": "Simple image recognition example",
+        "info": "",
+        "x": 210,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "e551859e.787188",
+        "type": "tjbot-config",
+        "z": "",
+        "botGender": "female",
+        "name": "TJBot",
+        "listen": "es-ES",
+        "speak": "es-ES",
+        "hasServo": true,
+        "hasLED": true,
+        "hasSpeaker": true,
+        "hasMicrophone": true,
+        "hasCamera": true,
+        "speakerDeviceId": "default",
+        "microphoneDeviceId": ""
+    }
+]

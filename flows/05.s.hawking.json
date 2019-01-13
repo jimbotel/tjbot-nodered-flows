@@ -1,0 +1,247 @@
+[
+    {
+        "id": "46e81c8.09034e4",
+        "type": "inject",
+        "z": "4c09da13.a75c34",
+        "name": "Texto de entrada",
+        "topic": "",
+        "payload": "\"Intelligence is the ability to adapt to change.\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 140,
+        "y": 320,
+        "wires": [
+            [
+                "628d514.be0a2b",
+                "a18f2aaf.214708"
+            ]
+        ]
+    },
+    {
+        "id": "6ea04ad5.644014",
+        "type": "exec",
+        "z": "4c09da13.a75c34",
+        "command": "",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "espeak",
+        "x": 500,
+        "y": 300,
+        "wires": [
+            [
+                "2c1950.f89c36b"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "2c1950.f89c36b",
+        "type": "debug",
+        "z": "4c09da13.a75c34",
+        "name": "stdout",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 650,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "628d514.be0a2b",
+        "type": "debug",
+        "z": "4c09da13.a75c34",
+        "name": "texto",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 330,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "a18f2aaf.214708",
+        "type": "function",
+        "z": "4c09da13.a75c34",
+        "name": "",
+        "func": "msg.payload = \"espeak \" + msg.payload + \" --stdout \";\n// msg.payload = msg.payload + \" | aplay -D bluealsa:HCI=hci0,DEV=FC:58:FA:D3:E6:14,PROFILE=a2dp\"\nmsg.payload = msg.payload + \" | aplay \"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 300,
+        "wires": [
+            [
+                "6ea04ad5.644014"
+            ]
+        ]
+    },
+    {
+        "id": "cf83b885.9ef298",
+        "type": "inject",
+        "z": "4c09da13.a75c34",
+        "name": "Texto de entrada",
+        "topic": "",
+        "payload": "\"Intelligence is the ability to adapt to change.\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 140,
+        "y": 140,
+        "wires": [
+            [
+                "f5b8fca4.8de9c",
+                "7d42e763.161138"
+            ]
+        ]
+    },
+    {
+        "id": "f5b8fca4.8de9c",
+        "type": "debug",
+        "z": "4c09da13.a75c34",
+        "name": "texto",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 330,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "7d42e763.161138",
+        "type": "exec",
+        "z": "4c09da13.a75c34",
+        "command": "espeak ",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "espeak",
+        "x": 480,
+        "y": 120,
+        "wires": [
+            [
+                "1db66cce.dad143"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "1db66cce.dad143",
+        "type": "debug",
+        "z": "4c09da13.a75c34",
+        "name": "stdout",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 630,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "3ef7e345.f7d77c",
+        "type": "comment",
+        "z": "4c09da13.a75c34",
+        "name": "USB",
+        "info": "",
+        "x": 90,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "be92f1c0.d2dd",
+        "type": "inject",
+        "z": "4c09da13.a75c34",
+        "name": "filename",
+        "topic": "",
+        "payload": "/usr/share/scratch/Media/Sounds/Vocals/Singer1.wav",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 420,
+        "wires": [
+            [
+                "b4768ef.b045f7"
+            ]
+        ]
+    },
+    {
+        "id": "b4768ef.b045f7",
+        "type": "exec",
+        "z": "4c09da13.a75c34",
+        "command": "aplay ",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "aplay",
+        "x": 270,
+        "y": 420,
+        "wires": [
+            [
+                "558ec20e.e80dac"
+            ],
+            [
+                "558ec20e.e80dac"
+            ],
+            [
+                "558ec20e.e80dac"
+            ]
+        ]
+    },
+    {
+        "id": "558ec20e.e80dac",
+        "type": "debug",
+        "z": "4c09da13.a75c34",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 490,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "8a51780.9fc2088",
+        "type": "comment",
+        "z": "4c09da13.a75c34",
+        "name": "Pruebas Bluetooth",
+        "info": "",
+        "x": 130,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "c22952a2.3d7e2",
+        "type": "comment",
+        "z": "4c09da13.a75c34",
+        "name": "Testing espeak/aplay playing audio to USB speaker and to bluetooth speaker",
+        "info": "",
+        "x": 310,
+        "y": 40,
+        "wires": []
+    }
+]

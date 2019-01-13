@@ -1,0 +1,140 @@
+[
+    {
+        "id": "327ccb89.d93394",
+        "type": "tjbot-see",
+        "z": "d70f897c.61fe88",
+        "botId": "e551859e.787188",
+        "mode": "takephoto",
+        "verticalFlip": false,
+        "horizontalFlip": false,
+        "width": 960,
+        "height": 720,
+        "name": "Hacer una foto",
+        "x": 320,
+        "y": 160,
+        "wires": [
+            [
+                "aa375af3.c815c8",
+                "18958d41.5f3563"
+            ]
+        ]
+    },
+    {
+        "id": "662e6c6d.d590f4",
+        "type": "http in",
+        "z": "d70f897c.61fe88",
+        "name": "",
+        "url": "/foto",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 160,
+        "wires": [
+            [
+                "327ccb89.d93394"
+            ]
+        ]
+    },
+    {
+        "id": "aa375af3.c815c8",
+        "type": "file in",
+        "z": "d70f897c.61fe88",
+        "name": "",
+        "filename": "",
+        "format": "",
+        "sendError": true,
+        "x": 530,
+        "y": 160,
+        "wires": [
+            [
+                "d3d168aa.59b228"
+            ]
+        ]
+    },
+    {
+        "id": "d3d168aa.59b228",
+        "type": "change",
+        "z": "d70f897c.61fe88",
+        "name": "Set Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.content-type",
+                "pt": "msg",
+                "to": "image/jpg",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 160,
+        "wires": [
+            [
+                "4dbf1a6f.7fc744"
+            ]
+        ]
+    },
+    {
+        "id": "4dbf1a6f.7fc744",
+        "type": "http response",
+        "z": "d70f897c.61fe88",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 850,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "18958d41.5f3563",
+        "type": "debug",
+        "z": "d70f897c.61fe88",
+        "name": "El archivo de salida",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "filename",
+        "x": 590,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "505638f7.1947e8",
+        "type": "comment",
+        "z": "d70f897c.61fe88",
+        "name": "Hace una foto y la muestra: http://127.0.0.1:1880/foto",
+        "info": "Para hacer la foto abrir una nueva pestaña y poner la dirección:\nhttp://127.0.0.1:1880/foto\n",
+        "x": 250,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "e551859e.787188",
+        "type": "tjbot-config",
+        "z": "",
+        "botGender": "female",
+        "name": "TJBot",
+        "listen": "es-ES",
+        "speak": "es-ES",
+        "hasServo": true,
+        "hasLED": true,
+        "hasSpeaker": true,
+        "hasMicrophone": true,
+        "hasCamera": true,
+        "speakerDeviceId": "default",
+        "microphoneDeviceId": ""
+    }
+]

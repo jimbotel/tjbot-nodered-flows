@@ -1,0 +1,301 @@
+[
+    {
+        "id": "6ee186ec.d09058",
+        "type": "inject",
+        "z": "3c64fd83.1bf942",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "93c51151.0ae548"
+            ]
+        ]
+    },
+    {
+        "id": "6ace0bde.77aa64",
+        "type": "debug",
+        "z": "3c64fd83.1bf942",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 790,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "e24dd712.781b48",
+        "type": "debug",
+        "z": "3c64fd83.1bf942",
+        "name": "return code",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.code",
+        "x": 670,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "749e0c9d.d04154",
+        "type": "switch",
+        "z": "3c64fd83.1bf942",
+        "name": "codigo retorno",
+        "property": "payload.code",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 440,
+        "y": 220,
+        "wires": [
+            [
+                "e24dd712.781b48"
+            ],
+            [
+                "4259adb.1e1bc54"
+            ]
+        ]
+    },
+    {
+        "id": "4259adb.1e1bc54",
+        "type": "delay",
+        "z": "3c64fd83.1bf942",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 260,
+        "y": 260,
+        "wires": [
+            [
+                "7774144c.824e6c"
+            ]
+        ]
+    },
+    {
+        "id": "7774144c.824e6c",
+        "type": "link out",
+        "z": "3c64fd83.1bf942",
+        "name": "",
+        "links": [
+            "69f08396.42775c"
+        ],
+        "x": 428,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "953e3ba9.f2b0a",
+        "type": "comment",
+        "z": "3c64fd83.1bf942",
+        "name": "Otra opción: reproduce un archivo de audio al iniciar node-red. El archivo seleccionado depende de la dirección IP",
+        "info": "",
+        "x": 550,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "bfc22822.0129a8",
+        "type": "comment",
+        "z": "3c64fd83.1bf942",
+        "name": "Al final, invoca al flujo \"Dime IP\"",
+        "info": "",
+        "x": 590,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "5ac37b61.3af114",
+        "type": "exec",
+        "z": "3c64fd83.1bf942",
+        "command": "hostname -I | awk '{print $1}' | sed 's/^.*\\(.\\)$/\\1/'",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "num equipo",
+        "x": 270,
+        "y": 540,
+        "wires": [
+            [
+                "cc34b24f.4dc8f8"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "cc34b24f.4dc8f8",
+        "type": "function",
+        "z": "3c64fd83.1bf942",
+        "name": "selecciona audio",
+        "func": "var str1 = msg.payload.trim();\nmsg.payload = \"/home/pi/Music/0\" + str1 + \".wav\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 520,
+        "wires": [
+            [
+                "83b158e7.d9b7"
+            ]
+        ]
+    },
+    {
+        "id": "93c51151.0ae548",
+        "type": "exec",
+        "z": "3c64fd83.1bf942",
+        "command": "hostname | grep '[0-9]' | sed 's/^.*\\([0-9]\\)$/\\1/'",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "mira la IP",
+        "x": 260,
+        "y": 120,
+        "wires": [
+            [
+                "ef0ba115.1d597"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ef0ba115.1d597",
+        "type": "function",
+        "z": "3c64fd83.1bf942",
+        "name": "mensaje",
+        "func": "if(! msg.payload.trim()) {\n    msg.payload = \"\\\"soy el equipo máster.\\\"\";\n} else {\n    msg.payload = \"\\\"soy el equipo\" + msg.payload + \"\\\"\"; \n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 420,
+        "y": 100,
+        "wires": [
+            [
+                "753e2760.07d448",
+                "46ed0bfa.661294"
+            ]
+        ]
+    },
+    {
+        "id": "753e2760.07d448",
+        "type": "exec",
+        "z": "3c64fd83.1bf942",
+        "command": "espeak -v spanish ",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "espeak",
+        "x": 560,
+        "y": 100,
+        "wires": [
+            [
+                "6ace0bde.77aa64"
+            ],
+            [
+                "6ace0bde.77aa64"
+            ],
+            [
+                "749e0c9d.d04154"
+            ]
+        ]
+    },
+    {
+        "id": "83b158e7.d9b7",
+        "type": "exec",
+        "z": "3c64fd83.1bf942",
+        "command": "aplay ",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "aplay",
+        "x": 670,
+        "y": 520,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "46ed0bfa.661294",
+        "type": "debug",
+        "z": "3c64fd83.1bf942",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 570,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "855e5d12.e86b68",
+        "type": "comment",
+        "z": "3c64fd83.1bf942",
+        "name": "Reproduce el nombre del equipo",
+        "info": "",
+        "x": 170,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "661b11c2.a741d",
+        "type": "comment",
+        "z": "3c64fd83.1bf942",
+        "name": "Master TJBot's hostname is \"mastertjbot\", while students TJBot's hostnames are \"equipotj0x\" (x=1,2,3 ... n).",
+        "info": "",
+        "x": 410,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "4bb01d86.c8f6e4",
+        "type": "comment",
+        "z": "3c64fd83.1bf942",
+        "name": "The logic in \"message\" function use this fact to change the message to be spoken",
+        "info": "",
+        "x": 330,
+        "y": 420,
+        "wires": []
+    }
+]

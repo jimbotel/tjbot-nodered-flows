@@ -1,0 +1,107 @@
+[
+    {
+        "id": "f2f56bf3.24d0f8",
+        "type": "inject",
+        "z": "f92df7e2.14b7a8",
+        "name": "Instruccion mover brazo",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 150,
+        "y": 180,
+        "wires": [
+            [
+                "e66bc234.d31ca"
+            ]
+        ]
+    },
+    {
+        "id": "e66bc234.d31ca",
+        "type": "tjbot-wave",
+        "z": "f92df7e2.14b7a8",
+        "botId": "e551859e.787188",
+        "motion": "wave",
+        "name": "Mover el brazo",
+        "x": 400,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9cf5cc0b.676c5",
+        "type": "http in",
+        "z": "f92df7e2.14b7a8",
+        "name": "",
+        "url": "/mueve",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 280,
+        "wires": [
+            [
+                "e66bc234.d31ca",
+                "eec3bf52.fa1d3"
+            ]
+        ]
+    },
+    {
+        "id": "13bdabd8.bdc444",
+        "type": "http response",
+        "z": "f92df7e2.14b7a8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "eec3bf52.fa1d3",
+        "type": "template",
+        "z": "f92df7e2.14b7a8",
+        "name": "resultado",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "ok\n",
+        "output": "str",
+        "x": 340,
+        "y": 280,
+        "wires": [
+            [
+                "13bdabd8.bdc444"
+            ]
+        ]
+    },
+    {
+        "id": "b11ca807.bc7628",
+        "type": "comment",
+        "z": "f92df7e2.14b7a8",
+        "name": "Mueve el brazo de TJBot. También es posible invocarlo via http",
+        "info": "",
+        "x": 250,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "e551859e.787188",
+        "type": "tjbot-config",
+        "z": "",
+        "botGender": "female",
+        "name": "TJBot",
+        "listen": "es-ES",
+        "speak": "es-ES",
+        "hasServo": true,
+        "hasLED": true,
+        "hasSpeaker": true,
+        "hasMicrophone": true,
+        "hasCamera": true,
+        "speakerDeviceId": "default",
+        "microphoneDeviceId": ""
+    }
+]

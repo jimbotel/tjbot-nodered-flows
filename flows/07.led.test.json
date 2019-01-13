@@ -1,0 +1,107 @@
+[
+    {
+        "id": "7ddfbb37.928114",
+        "type": "inject",
+        "z": "a3263050.91663",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 200,
+        "y": 180,
+        "wires": [
+            [
+                "b031ab28.212788",
+                "790355bc.8fc4dc"
+            ]
+        ]
+    },
+    {
+        "id": "b031ab28.212788",
+        "type": "delay",
+        "z": "a3263050.91663",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "4",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 340,
+        "y": 200,
+        "wires": [
+            [
+                "ca080be.f7382f8"
+            ]
+        ]
+    },
+    {
+        "id": "f19d3c5.01a17c",
+        "type": "comment",
+        "z": "a3263050.91663",
+        "name": "Blink Light",
+        "info": "",
+        "x": 180,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "790355bc.8fc4dc",
+        "type": "tjbot-shine",
+        "z": "a3263050.91663",
+        "botId": "e551859e.787188",
+        "mode": "shine",
+        "color": "red",
+        "duration": "0.5",
+        "name": "Color: red",
+        "x": 460,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ca080be.f7382f8",
+        "type": "tjbot-shine",
+        "z": "a3263050.91663",
+        "botId": "e551859e.787188",
+        "mode": "shine",
+        "color": "black",
+        "duration": "0.5",
+        "name": "Color: black",
+        "x": 550,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "6a726d76.1edd14",
+        "type": "comment",
+        "z": "a3263050.91663",
+        "name": "Sets the LED color to red for 4 seconds, then turn it off",
+        "info": "",
+        "x": 330,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "e551859e.787188",
+        "type": "tjbot-config",
+        "z": "",
+        "botGender": "female",
+        "name": "TJBot",
+        "listen": "es-ES",
+        "speak": "es-ES",
+        "hasServo": true,
+        "hasLED": true,
+        "hasSpeaker": true,
+        "hasMicrophone": true,
+        "hasCamera": true,
+        "speakerDeviceId": "default",
+        "microphoneDeviceId": ""
+    }
+]

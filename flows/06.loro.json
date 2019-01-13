@@ -1,0 +1,194 @@
+[
+    {
+        "id": "fd5052f3.3f9fb",
+        "type": "tjbot-listen",
+        "z": "5a13d4e8.01419c",
+        "botId": "e551859e.787188",
+        "name": "",
+        "x": 490,
+        "y": 180,
+        "wires": [
+            [
+                "635a0518.ab36ac",
+                "8d05f71f.9e7078",
+                "a2a3dbf4.76c448"
+            ]
+        ]
+    },
+    {
+        "id": "abd092d5.41e6",
+        "type": "debug",
+        "z": "5a13d4e8.01419c",
+        "name": "speak",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 510,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "ab8a67f5.0700f8",
+        "type": "inject",
+        "z": "5a13d4e8.01419c",
+        "name": "empezar a escuchar",
+        "topic": "",
+        "payload": "start",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "8cf9f670.622be8"
+            ]
+        ]
+    },
+    {
+        "id": "7cdce0f2.c45d3",
+        "type": "inject",
+        "z": "5a13d4e8.01419c",
+        "name": "parar de escuchar",
+        "topic": "",
+        "payload": "stop",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 280,
+        "wires": [
+            [
+                "8cf9f670.622be8"
+            ]
+        ]
+    },
+    {
+        "id": "8cf9f670.622be8",
+        "type": "change",
+        "z": "5a13d4e8.01419c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mode",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 180,
+        "wires": [
+            [
+                "fd5052f3.3f9fb"
+            ]
+        ]
+    },
+    {
+        "id": "635a0518.ab36ac",
+        "type": "tjbot-speak",
+        "z": "5a13d4e8.01419c",
+        "botId": "e551859e.787188",
+        "mode": "speak",
+        "payload": "",
+        "name": "",
+        "x": 350,
+        "y": 380,
+        "wires": [
+            [
+                "abd092d5.41e6"
+            ]
+        ]
+    },
+    {
+        "id": "8d05f71f.9e7078",
+        "type": "delay",
+        "z": "5a13d4e8.01419c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 400,
+        "y": 60,
+        "wires": [
+            [
+                "6a9e7d84.9bca74"
+            ]
+        ]
+    },
+    {
+        "id": "6a9e7d84.9bca74",
+        "type": "function",
+        "z": "5a13d4e8.01419c",
+        "name": "para",
+        "func": "msg.mode = \"stop\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 570,
+        "y": 60,
+        "wires": [
+            [
+                "fd5052f3.3f9fb"
+            ]
+        ]
+    },
+    {
+        "id": "a2a3dbf4.76c448",
+        "type": "debug",
+        "z": "5a13d4e8.01419c",
+        "name": "listen",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 590,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "47bd9ec3.f29cd",
+        "type": "comment",
+        "z": "5a13d4e8.01419c",
+        "name": "Repeats what it listens",
+        "info": "",
+        "x": 120,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "e551859e.787188",
+        "type": "tjbot-config",
+        "z": "",
+        "botGender": "female",
+        "name": "TJBot",
+        "listen": "es-ES",
+        "speak": "es-ES",
+        "hasServo": true,
+        "hasLED": true,
+        "hasSpeaker": true,
+        "hasMicrophone": true,
+        "hasCamera": true,
+        "speakerDeviceId": "default",
+        "microphoneDeviceId": ""
+    }
+]

@@ -1,0 +1,459 @@
+[
+    {
+        "id": "a9561624.e2bfe8",
+        "type": "inject",
+        "z": "bbaaea66.0b5ec8",
+        "name": "Frase",
+        "topic": "",
+        "payload": "<speak version=\"1.0\">  <break strength=\"strong\"></break> Hola soy T J Bot. </speak>",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "c9c09b49.9270a8"
+            ]
+        ]
+    },
+    {
+        "id": "c9c09b49.9270a8",
+        "type": "tjbot-speak",
+        "z": "bbaaea66.0b5ec8",
+        "botId": "e551859e.787188",
+        "mode": "speak",
+        "payload": "",
+        "name": "Habla",
+        "x": 330,
+        "y": 120,
+        "wires": [
+            [
+                "f382cb96.49b7e8"
+            ]
+        ]
+    },
+    {
+        "id": "f382cb96.49b7e8",
+        "type": "debug",
+        "z": "bbaaea66.0b5ec8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 510,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "621aaa88.c0f454",
+        "type": "watson-text-to-speech",
+        "z": "bbaaea66.0b5ec8",
+        "name": "lee",
+        "lang": "es-ES",
+        "langhidden": "es-ES",
+        "langcustom": "NoCustomisationSetting",
+        "langcustomhidden": "",
+        "voice": "es-ES_LauraVoice",
+        "voicehidden": "",
+        "format": "audio/wav",
+        "password": "S3MQavQE2YPX",
+        "payload-response": true,
+        "default-endpoint": true,
+        "service-endpoint": "https://stream.watsonplatform.net/text-to-speech/api",
+        "x": 290,
+        "y": 320,
+        "wires": [
+            [
+                "8864e241.4754e"
+            ]
+        ]
+    },
+    {
+        "id": "8864e241.4754e",
+        "type": "file",
+        "z": "bbaaea66.0b5ec8",
+        "name": "",
+        "filename": "/home/pi/audio/parandoelflujo.wav",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "true",
+        "x": 520,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "93cc79e6.2397f8",
+        "type": "inject",
+        "z": "bbaaea66.0b5ec8",
+        "name": "Frase",
+        "topic": "",
+        "payload": "parando el flujo",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 320,
+        "wires": [
+            [
+                "621aaa88.c0f454"
+            ]
+        ]
+    },
+    {
+        "id": "c5a18a7e.564d28",
+        "type": "comment",
+        "z": "bbaaea66.0b5ec8",
+        "name": "TTS a archivo",
+        "info": "",
+        "x": 110,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "6c048680.2f7628",
+        "type": "comment",
+        "z": "bbaaea66.0b5ec8",
+        "name": "TTS a altavoz",
+        "info": "",
+        "x": 110,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "c295f04d.ace06",
+        "type": "inject",
+        "z": "bbaaea66.0b5ec8",
+        "name": "filename",
+        "topic": "",
+        "payload": "/home/pi/Music/aureliano.wav",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "e63998e1.a85418"
+            ]
+        ]
+    },
+    {
+        "id": "e63998e1.a85418",
+        "type": "exec",
+        "z": "bbaaea66.0b5ec8",
+        "command": "aplay ",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "aplay",
+        "x": 290,
+        "y": 180,
+        "wires": [
+            [
+                "a2074afe.0bddc8"
+            ],
+            [
+                "a2074afe.0bddc8"
+            ],
+            [
+                "a2074afe.0bddc8"
+            ]
+        ]
+    },
+    {
+        "id": "a2074afe.0bddc8",
+        "type": "debug",
+        "z": "bbaaea66.0b5ec8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 510,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "54e63749.63d258",
+        "type": "inject",
+        "z": "bbaaea66.0b5ec8",
+        "name": "filename",
+        "topic": "",
+        "payload": "/home/pi/audio/howcanihelpyou.wav",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 140,
+        "y": 380,
+        "wires": [
+            [
+                "52711f40.8b7b1"
+            ]
+        ]
+    },
+    {
+        "id": "52711f40.8b7b1",
+        "type": "exec",
+        "z": "bbaaea66.0b5ec8",
+        "command": "aplay ",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "aplay",
+        "x": 290,
+        "y": 380,
+        "wires": [
+            [
+                "5f5466bd.8e5cf8"
+            ],
+            [
+                "5f5466bd.8e5cf8"
+            ],
+            [
+                "5f5466bd.8e5cf8"
+            ]
+        ]
+    },
+    {
+        "id": "5f5466bd.8e5cf8",
+        "type": "debug",
+        "z": "bbaaea66.0b5ec8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 510,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "bdf5b3d9.aefd3",
+        "type": "inject",
+        "z": "bbaaea66.0b5ec8",
+        "name": "Grabar",
+        "topic": "",
+        "payload": "start",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 110,
+        "y": 500,
+        "wires": [
+            [
+                "cd498d78.46ed5"
+            ]
+        ]
+    },
+    {
+        "id": "7a4e16bb.087b4",
+        "type": "watson-speech-to-text",
+        "z": "bbaaea66.0b5ec8",
+        "name": "",
+        "alternatives": "",
+        "speakerlabels": false,
+        "smartformatting": false,
+        "lang": "es-ES",
+        "langhidden": "es-ES",
+        "langcustom": "NoCustomisationSetting",
+        "langcustomhidden": "",
+        "band": "NarrowbandModel",
+        "bandhidden": "NarrowbandModel",
+        "password": "YqcMPNICJk3x",
+        "payload-response": true,
+        "streaming-mode": false,
+        "streaming-mute": false,
+        "discard-listening": false,
+        "default-endpoint": true,
+        "service-endpoint": "",
+        "x": 660,
+        "y": 500,
+        "wires": [
+            [
+                "1e35c960.e942bf"
+            ]
+        ]
+    },
+    {
+        "id": "fc53185a.acca18",
+        "type": "comment",
+        "z": "bbaaea66.0b5ec8",
+        "name": "Grabar",
+        "info": "/usr/bin/arecord is available on \n   - Mac OSX\n   - Linux (ALSA)\n\nExperiment with SoX on Windows",
+        "x": 90,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "1e35c960.e942bf",
+        "type": "debug",
+        "z": "bbaaea66.0b5ec8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 850,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "cd498d78.46ed5",
+        "type": "exec",
+        "z": "bbaaea66.0b5ec8",
+        "command": "/usr/bin/arecord -d 5 --device=plughw:1,0 -r 16000 -c 1  -f S16_LE /home/pi/test.wav",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "arecord",
+        "x": 260,
+        "y": 500,
+        "wires": [
+            [
+                "80a8fc3b.3aae28"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "80a8fc3b.3aae28",
+        "type": "file in",
+        "z": "bbaaea66.0b5ec8",
+        "name": "",
+        "filename": "/home/pi/test.wav",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "x": 450,
+        "y": 500,
+        "wires": [
+            [
+                "7a4e16bb.087b4"
+            ]
+        ]
+    },
+    {
+        "id": "5a48bd48.1d3774",
+        "type": "function",
+        "z": "bbaaea66.0b5ec8",
+        "name": "parametros arecord",
+        "func": "var device = \"plughw:1,0\";\nvar duration = \"3\";\nvar sample_rate = \"16000\";\nvar nchannels = \"1\";\nvar format = \"S16_LE\";\nvar outfile = \"/home/pi/audio/holatjbot03.wav\";\nmsg.payload = \" -d \" + duration + \" --device=\" + device + \" -r \" + sample_rate + \" -c \" + nchannels + \" -f \" + format + \" \" + outfile;\n \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 300,
+        "y": 660,
+        "wires": [
+            [
+                "207967e9.8698c8"
+            ]
+        ]
+    },
+    {
+        "id": "5f5ba81a.2b3ff",
+        "type": "inject",
+        "z": "bbaaea66.0b5ec8",
+        "name": "Grabar",
+        "topic": "",
+        "payload": "start",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 110,
+        "y": 660,
+        "wires": [
+            [
+                "5a48bd48.1d3774"
+            ]
+        ]
+    },
+    {
+        "id": "207967e9.8698c8",
+        "type": "exec",
+        "z": "bbaaea66.0b5ec8",
+        "command": "/usr/bin/arecord ",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "arecord",
+        "x": 520,
+        "y": 660,
+        "wires": [
+            [
+                "e5cee5bf.fa42b8"
+            ],
+            [
+                "e5cee5bf.fa42b8"
+            ],
+            [
+                "e5cee5bf.fa42b8"
+            ]
+        ]
+    },
+    {
+        "id": "e5cee5bf.fa42b8",
+        "type": "debug",
+        "z": "bbaaea66.0b5ec8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 710,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "245a10cb.1ce18",
+        "type": "comment",
+        "z": "bbaaea66.0b5ec8",
+        "name": "frases",
+        "info": "Si quieres hablar conmigo, dime: \"Hola, tiyeibot\"",
+        "x": 467,
+        "y": 268,
+        "wires": []
+    },
+    {
+        "id": "e551859e.787188",
+        "type": "tjbot-config",
+        "z": "",
+        "botGender": "female",
+        "name": "TJBot",
+        "listen": "es-ES",
+        "speak": "es-ES",
+        "hasServo": true,
+        "hasLED": true,
+        "hasSpeaker": true,
+        "hasMicrophone": true,
+        "hasCamera": true,
+        "speakerDeviceId": "default",
+        "microphoneDeviceId": ""
+    }
+]
