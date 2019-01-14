@@ -1,17 +1,19 @@
 # tjbot-nodered-flows
 ## node-red flows created to show Watson services to students using TJBot
 
+These node-red flows are used in a Spanish version of the TJBot "Activity Kit", see [What’s Possible With AI – TJ Bot](https://www.ibm.com/ibm/responsibility/initiatives/activitykits/tjbot/), available in the [IBM volunteers](https://www.ibm.com/volunteers/home.wss) web site. Some of these flows (or a simpler version of them) will be built by the students following a document available in the kit, while others (like the "welcome" one) were created to help or amuse.
+
 ## Bienvenida (welcome)
  
-This flow is automatically executed once when node-red starts. It checks the hostname of the raspberry and it synthesizes an audio message giving this information. It also checks the main IP address and plays it back. For this second task, another flow (Dime IP) is invoked. This way we show the concept of "wiring flows" ("link" node). 
+This flow is automatically executed once when node-red starts. It checks raspberry's hostname and it synthesizes an audio message giving this information. It also checks the main IP address and plays it back. For this second task, another flow (Dime IP) is invoked. This way we show the concept of "wiring flows" ("link" node). 
 
 For example, if the student TJBot's hostname is "equipotj01" and the IP address is 192.168.1.105, the audio played will be:
 
 &nbsp;&nbsp;&nbsp;"soy el equipo 1. Mi dirección IP de wifi es 192.168.1.105"
 
-The idea is that TJBot can be setup in a "headless" way, with no attached display to the raspberry. With this setup, TJBot will connect to a pre-defined wireless network and the student will connect to it from a PC or laptop using VNC Viewer. In order to do that, they need to know the IP address assigned to TJBot, and that's where these two flows help.
+The idea is that TJBot can be setup in a "headless" way, with no attached display to the raspberry. With this setup, TJBot will connect to a pre-defined wireless network. The student will connect to TJBot from a PC or laptop using VNC Viewer. In order to do that, they need to know the IP address assigned to TJBot, and that's where these two flows help.
 
-The flow also shows an example of how to invoke shell commands and gather the standard output, standard error and the return code.
+The flow also shows an example of how to invoke shell commands from node-red and gather the standard output, standard error and the return code.
 
 Flow dependencies:
 * [espeak](http://espeak.sourceforge.net/): It can be installed from the command line doing a "sudo apt-get install espeak". It is a completely synthetic voice, it doesn't sound natural but it provides "local" text-to-speech services (not dependent on internet connection and/or IBM cloud service).
@@ -21,7 +23,7 @@ Flow dependencies:
 
 ## Dime IP (give my IP)
 
-The purpose of this flow is explained above. The flow is designed so that the audio message reporting the IP address can be repeated several times (by default it is only played once) to give additional opportunities to the student taking note of the IP address. It also introduces the use of variables and the "for loop" in JavaScript. 
+The purpose of this flow is explained above. The flow is designed so that the audio message reporting the IP address can be repeated several times (by default it is only played once) to give additional opportunities to the student of taking note of the IP address. It also introduces the use of variables and the "for loop" in JavaScript. 
 
 Flow dependencies:
 * [espeak](http://espeak.sourceforge.net/)(see above)
@@ -31,7 +33,7 @@ Flow dependencies:
 ## Mover brazo (move arm)
 
 This flow shows how to move TJBot's arm (servomotor). In this and other flows we use Jean Carl TJBot's nodes (see "dependencies" section). They are very robust and easy to use. 
-The flow can be activated manually using the "inject" node, or it can also be accessed via web (ex: http://127.0.0.1:1880/mueve ). This introduces the "http in", "template" and "http response" nodes with a very simple example.
+The flow can be activated manually using the "inject" node, or it can also be accessed via web, for example: http://127.0.0.1:1880/mueve , using the loopback IP address (the assigned IP address is also valid). The flow introduces the "http in", "template" and "http response" nodes with this very simple example.
 
 Flow dependencies:
 * [Jean Carl's node-red-contrib-tjbot](https://github.com/jeancarl/node-red-contrib-tjbot): node "tjbot-wave"
@@ -42,7 +44,7 @@ Flow dependencies:
 
 This flow is a test bench to play with command invocation using espeak to synthesize speech and aplay to reproduce audio files.
 
-It also shows options to reproduce audio to a USB speaker or a bluetooth one.
+It shows command options to reproduce audio to a USB speaker or a bluetooth one, and it encourages students to explore other options (e.g. setting the language, speed, pitch, etc).
 
 Flow dependencies:
 * [espeak](http://espeak.sourceforge.net/)(see above)
@@ -51,7 +53,7 @@ Flow dependencies:
 
 ## Loro (parrot)
 
-This flow uses Speech to Text to convert audio input captured from the microphone into text, and then it plays this text back through the speaker using Text to Speech. The flow introduces a feedback mechanism to stop "listening" once some text has been recognized. 
+This flow uses Watson Speech to Text service to convert audio input captured from the microphone into text, and then it plays this text back through the speaker using Watson Text to Speech service. The flow introduces a feedback mechanism to stop "listening" once some text has been recognized. 
 
 Flow dependencies:
 * [Jean Carl's node-red-contrib-tjbot](https://github.com/jeancarl/node-red-contrib-tjbot): nodes "tjbot-listen" and "tjbot-speak"
@@ -69,7 +71,7 @@ Flow dependencies:
 
 ## LED voz (LED controlled via voice) 
 
-This flow listens to the color request (in Spanish) and then set the LED color accordingly. The flow combines Speech to Text and Language Translation to translate the color name from Spanish to English.
+This flow listens to the color request (in Spanish) and then set the LED color accordingly. The flow combines Watson Speech to Text to capture the request and Watson Language Translator services to translate the color name from Spanish to English.
 
 Flow dependencies:
 * [Jean Carl's node-red-contrib-tjbot](https://github.com/jeancarl/node-red-contrib-tjbot): nodes "tjbot-listen", "tjbot-translate" and "tjbot-shine"
@@ -78,7 +80,7 @@ Flow dependencies:
 
 ## Reconocimiento de imagen (image recognition) 
 
-This flow is also one of the examples from Jean Carl. It takes a photo using the Raspberry camera and analyzes it using Watson Visual Recognition.
+This flow is also one of the examples from Jean Carl. It takes a photo using the Raspberry camera and analyzes it using Watson Visual Recognition service.
 
 Flow dependencies:
 * [Jean Carl's node-red-contrib-tjbot](https://github.com/jeancarl/node-red-contrib-tjbot): node "tjbot-see"
