@@ -1,7 +1,7 @@
 # tjbot-nodered-flows
 ## node-red flows created to show Watson services to students using TJBot
 
-These node-red flows are used in a Spanish version of the TJBot "Activity Kit", see [What’s Possible With AI – TJ Bot](https://www.ibm.com/ibm/responsibility/initiatives/activitykits/tjbot/), available in the [IBM volunteers](https://www.ibm.com/volunteers/home.wss) web site. Some of these flows (or a simpler version of them) will be built by the students following a document available in the kit, while others (like the "welcome" one) were created to help or amuse.
+These node-red flows are used in a Spanish version of the TJBot "Activity Kit", see [What’s Possible With AI – TJ Bot](https://www.ibm.com/ibm/responsibility/initiatives/activitykits/tjbot/), available in the [IBM volunteers](https://www.ibm.com/volunteers/home.wss) web site. Some of these flows (or a simpler version of them) are built by the students following a document available in the kit, while others (like the "welcome" one) were created to help or amuse.
 
 ## Bienvenida (welcome)
  
