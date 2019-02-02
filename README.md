@@ -103,6 +103,10 @@ This is the most complex flow of the series. It mimics the way "smart speakers" 
 It performs hotword ("Hola, tjbot") detection locally on the raspberry. When the hotword is detected, it carries out a conversation using Watson services: Speech to Text, Watson Assistant and Text to Speech. 
 The flow is explained in one of the presentations and the students learn how to customize the conversation to their own needs.
 
+This video shows an example of the conversation:
+
+[![link to a full video that shows the flow in action](https://img.youtube.com/vi/Loob-zuiWGA/0.jpg)](https://youtu.be/Loob-zuiWGA)
+
 Flow dependencies:
 * [node-red-contrib-micropi](https://flows.nodered.org/node/node-red-contrib-micropi). It allows recording and streaming audio from an usb microphone connected to a Raspberry Pi in Node-Red.
 * [node-red-contrib-snowboy](https://flows.nodered.org/node/node-red-contrib-snowboy). A customizable hotword detection engine for you to create your own hotword like "OK Google" or "Alexa".
