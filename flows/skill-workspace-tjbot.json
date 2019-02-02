@@ -1,0 +1,707 @@
+{
+  "name": "workspace-tjbot",
+  "intents": [
+    {
+      "intent": "Fortuna",
+      "examples": [
+        {
+          "text": "voy a tener suerte"
+        },
+        {
+          "text": "lee mi mano"
+        },
+        {
+          "text": "lee mi futuro"
+        },
+        {
+          "text": "que va a ser de mí"
+        },
+        {
+          "text": "predice el futuro"
+        },
+        {
+          "text": "dime el horóscopo"
+        },
+        {
+          "text": "dime mi fortuna"
+        }
+      ],
+      "description": "expresiones para pedir que te predigan el futuro"
+    },
+    {
+      "intent": "Adios",
+      "examples": [
+        {
+          "text": "arrivederci"
+        },
+        {
+          "text": "adiós"
+        },
+        {
+          "text": "hasta luego"
+        },
+        {
+          "text": "bye bye"
+        },
+        {
+          "text": "date el piro"
+        },
+        {
+          "text": "sayonara baby"
+        }
+      ],
+      "description": "despedidas"
+    },
+    {
+      "intent": "Chiste",
+      "examples": [
+        {
+          "text": "dime algo gracioso"
+        },
+        {
+          "text": "sabes un chiste"
+        },
+        {
+          "text": "hazme reir"
+        },
+        {
+          "text": "estoy triste"
+        },
+        {
+          "text": "cuentame un chiste"
+        },
+        {
+          "text": "cuentame una gracia"
+        }
+      ],
+      "description": "expresiones para pedir que me cuenten un chiste"
+    },
+    {
+      "intent": "Ayuda",
+      "examples": [
+        {
+          "text": "estoy perdido"
+        },
+        {
+          "text": "que puedo decir"
+        },
+        {
+          "text": "que puedes hacer"
+        },
+        {
+          "text": "necesito ayuda"
+        },
+        {
+          "text": "opciones"
+        },
+        {
+          "text": "no se que decir"
+        },
+        {
+          "text": "que opciones tengo"
+        },
+        {
+          "text": "puedes ayudarme"
+        }
+      ],
+      "description": "expresiones de petición de ayuda"
+    },
+    {
+      "intent": "Gracias",
+      "examples": [
+        {
+          "text": "eres la caña de españa"
+        },
+        {
+          "text": "gracias eres el mejor"
+        },
+        {
+          "text": "muchas gracias"
+        },
+        {
+          "text": "muy bien hecho"
+        },
+        {
+          "text": "mejor imposible"
+        },
+        {
+          "text": "gracias"
+        }
+      ],
+      "description": "expresiones de agradecimiento"
+    },
+    {
+      "intent": "Saludos",
+      "examples": [
+        {
+          "text": "buenas noches"
+        },
+        {
+          "text": "como va eso"
+        },
+        {
+          "text": "ok robot"
+        },
+        {
+          "text": "hola tronco"
+        },
+        {
+          "text": "hola robot"
+        },
+        {
+          "text": "hola"
+        },
+        {
+          "text": "buenos días"
+        },
+        {
+          "text": "buenas tardes"
+        }
+      ],
+      "description": "recoge saludos que puede decir el usuario, sin contenido adicional"
+    },
+    {
+      "intent": "Cancelar",
+      "examples": [
+        {
+          "text": "menu principal"
+        },
+        {
+          "text": "menu"
+        },
+        {
+          "text": "comienza de nuevo"
+        },
+        {
+          "text": "corta"
+        },
+        {
+          "text": "cancelar"
+        },
+        {
+          "text": "olvida lo que te he dicho"
+        },
+        {
+          "text": "he cambiado de opinión"
+        },
+        {
+          "text": "no me rayes"
+        },
+        {
+          "text": "volver a empezar"
+        }
+      ],
+      "description": "expresiones para cancelar la petición y volver al principio"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "respuesta",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "si",
+          "synonyms": [
+            "sí",
+            "claro que sí",
+            "di que sí",
+            "apuesta por ello",
+            "sí, por favor",
+            "claro"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "no",
+          "synonyms": [
+            "no way",
+            "de ninguna manera",
+            "creo que no",
+            "claro que no",
+            "nunca",
+            "ahora no",
+            "date el piro"
+          ]
+        }
+      ],
+      "fuzzy_match": false
+    },
+    {
+      "entity": "signo_zodiaco",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "piscis",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "geminis",
+          "synonyms": [
+            "géminis"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "tauro",
+          "synonyms": [
+            "toro"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "libra",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "leo",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "capricornio",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "virgo",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "acuario",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "cancer",
+          "synonyms": [
+            "cáncer"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "escorpio",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "aries",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "sagitario",
+          "synonyms": [
+            "centauro"
+          ]
+        }
+      ]
+    }
+  ],
+  "language": "es",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-07-10"
+    }
+  },
+  "description": "",
+  "dialog_nodes": [
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "no te he entendido. Puedes decir: sagitario, piscis, etc"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_16_1528223178618",
+      "context": {
+        "intento": 1
+      },
+      "disabled": true,
+      "metadata": {},
+      "dialog_node": "node_17_1528223532681"
+    },
+    {
+      "type": "standard",
+      "title": "Adios",
+      "output": {
+        "text": {
+          "values": [
+            "sayonara, beíbi",
+            "Hasta luego, cocodrilo",
+            "Nos vemos"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "parent": "node_12_1528221476992",
+      "context": {
+        "nodo": "adios",
+        "endall": "si"
+      },
+      "metadata": {},
+      "conditions": "#Adios",
+      "dialog_node": "node_6_1528221101210",
+      "previous_sibling": "node_7_1528221192095"
+    },
+    {
+      "type": "standard",
+      "title": "Gracias",
+      "output": {
+        "text": {
+          "values": [
+            "okidoki, ¿Quieres algo más?",
+            "No problemo, ¿alguna otra cosa?"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "parent": "node_12_1528221476992",
+      "context": {
+        "nodo": "gracias"
+      },
+      "metadata": {},
+      "conditions": "#Gracias",
+      "dialog_node": "node_5_1528220932906",
+      "previous_sibling": "node_6_1528221101210"
+    },
+    {
+      "type": "standard",
+      "title": "Saludos",
+      "output": {},
+      "parent": "node_12_1528221476992",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#Saludos",
+      "dialog_node": "node_7_1528221192095",
+      "digress_out": "allow_all"
+    },
+    {
+      "type": "standard",
+      "title": "cuenta el chiste",
+      "output": {
+        "text": {
+          "values": [
+            "¿Cuál es el país que primero te llama y luego te asusta?  ¡E E! ¡U U!",
+            "¿Cómo se ríe un ojo?  ¡¡OJOJOJO!!",
+            "¿Dónde caga Batman? En el Bat  er.",
+            "¿Qué es un cerro?  ¡un númerro!",
+            "¿Tú eres tonto o qué?  Yo qué ¿Y tú?",
+            "¿Cómo se dice me robaron la moto en japonés? Yanoveo miyamaja",
+            "Va un loco de remate y  ¡¡¡GOOOOLLLL!!!",
+            "Mamá, ¿América está muy lejos?  ¡Calla y sigue nadando!",
+            "¿En qué país todo tiene fin?  En Fin-landia",
+            "Mamá, ¿puedo ver la televisión? Sí, pero sin encenderla.",
+            "Fue uno y se murió. Moraleja: No vayas.",
+            "¿Cómo sube Tor a un rascacielos? ¡En Eleva Tor!",
+            "Mamá, ¡en la clase soy el más alto y el que más sabe!   Claro hijo, si eres el profesor"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "parent": "node_1_1528219970842",
+      "metadata": {},
+      "conditions": "true",
+      "dialog_node": "node_1_1528467310791"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "¡hola!"
+          ]
+        }
+      },
+      "parent": "node_7_1528221192095",
+      "context": {
+        "nodo": "saludos"
+      },
+      "metadata": {},
+      "dialog_node": "node_11_1528221441712",
+      "previous_sibling": "node_10_1528221347403"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "hola, buenas tardes"
+          ]
+        }
+      },
+      "parent": "node_7_1528221192095",
+      "context": {
+        "nodo": "saludos"
+      },
+      "metadata": {},
+      "conditions": "now().after('12:00:00') && now().before('20:59:59')",
+      "dialog_node": "node_9_1528221319430",
+      "previous_sibling": "node_8_1528221302329"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "hola, buenas noches"
+          ]
+        }
+      },
+      "parent": "node_7_1528221192095",
+      "context": {
+        "nodo": "saludos"
+      },
+      "metadata": {},
+      "conditions": "now().after('21:00:00')",
+      "dialog_node": "node_10_1528221347403",
+      "previous_sibling": "node_9_1528221319430"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "hola, buenos días"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_7_1528221192095",
+      "context": {
+        "nodo": "saludos"
+      },
+      "metadata": {},
+      "conditions": "now().after('04:00:00') && now().before('11:59:59')",
+      "dialog_node": "node_8_1528221302329"
+    },
+    {
+      "type": "standard",
+      "title": "abandonar",
+      "output": {
+        "text": {
+          "values": [
+            "lo siento, no te entiendo, vamos a intentar otra cosa"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_2_1528220669963",
+      "context": {
+        "nodo": "abandonar"
+      },
+      "metadata": {},
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_15_1528222827463"
+      },
+      "conditions": "$intento == 2",
+      "dialog_node": "node_1_1528271501960",
+      "previous_sibling": "node_16_1528223178618"
+    },
+    {
+      "type": "standard",
+      "title": "no reconocido",
+      "output": {
+        "text": {
+          "values": [
+            "He entendido: \"<? input.text ?>\". Puedes decir: sagitario, piscis, etc"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_2_1528220669963",
+      "context": {
+        "nodo": "no reconocido",
+        "intento": "<? context.intento + 1 ?>"
+      },
+      "metadata": {
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_13_1528221737781"
+      },
+      "conditions": "$intento < 2",
+      "dialog_node": "node_16_1528223178618",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_13_1528221737781"
+    },
+    {
+      "type": "standard",
+      "title": "signo",
+      "output": {
+        "text": {
+          "values": [
+            "Sabía que eras un <?entities.signo_zodiaco[0].value?>, se te ve de lejos.",
+            "Genial, aquí está tu horóscopo:"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "parent": "node_2_1528220669963",
+      "context": {
+        "nodo": "signo"
+      },
+      "metadata": {},
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "@signo_zodiaco",
+      "dialog_node": "node_13_1528221737781"
+    },
+    {
+      "type": "standard",
+      "title": "leer horoscopo",
+      "output": {
+        "text": {
+          "values": [
+            "Esta semana va a ser fantástica para los <?entities.signo_zodiaco[0].value?>, atrévete a hacer algo nuevo",
+            "Mala suerte esta semana para los <?entities.signo_zodiaco[0].value?>, no salgas de casa",
+            "Los <?entities.signo_zodiaco[0].value?> encontrarán un nuevo amor, lánzate",
+            "Tu mejor amigo está de bajón, <?entities.signo_zodiaco[0].value?> tienes que ayudarle",
+            "Semana de la suerte para los <?entities.signo_zodiaco[0].value?>, ¡compra lotería!"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "parent": "node_13_1528221737781",
+      "context": {
+        "nodo": "leer horoscopo"
+      },
+      "metadata": {},
+      "conditions": "true",
+      "dialog_node": "node_14_1528222407249"
+    },
+    {
+      "type": "standard",
+      "title": "Ayuda",
+      "output": {
+        "text": {
+          "values": [
+            "Puedo contarte un chiste o decirte el horóscopo, ¿qué deseas?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "context": {
+        "nodo": "ayuda"
+      },
+      "metadata": {},
+      "conditions": "#Ayuda",
+      "dialog_node": "node_15_1528222827463",
+      "previous_sibling": "node_12_1528221476992"
+    },
+    {
+      "type": "standard",
+      "title": "Fortuna",
+      "output": {
+        "text": {
+          "values": [
+            "¿Cuál es tu signo del zodiaco?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "context": {
+        "nodo": "fortiuna",
+        "intento": 1
+      },
+      "metadata": {},
+      "conditions": "#Fortuna",
+      "dialog_node": "node_2_1528220669963",
+      "previous_sibling": "node_1_1528219970842"
+    },
+    {
+      "type": "standard",
+      "title": "Chistes",
+      "output": {
+        "text": {
+          "values": [
+            "éste es bueno:",
+            "éste lo peta:",
+            "Ahí va:",
+            "marchando chiste:"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "context": {
+        "nodo": "chistes"
+      },
+      "metadata": {},
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "#Chiste",
+      "dialog_node": "node_1_1528219970842",
+      "previous_sibling": "Bienvenido"
+    },
+    {
+      "type": "folder",
+      "title": "Charla",
+      "metadata": {},
+      "digress_in": "not_available",
+      "dialog_node": "node_12_1528221476992",
+      "previous_sibling": "node_2_1528220669963"
+    },
+    {
+      "type": "standard",
+      "title": "En otras cosas",
+      "output": {
+        "text": {
+          "values": [
+            "No te he oído, estaba a mi bola",
+            "¿Qué has dicho?"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "context": {
+        "nodo": "en otras cosas"
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "En otras cosas",
+      "previous_sibling": "node_15_1528222827463"
+    },
+    {
+      "type": "standard",
+      "title": "Bienvenido",
+      "output": {
+        "text": {
+          "values": [
+            "¿Qué hay de nuevo viejo?",
+            "Hola colega, ¿qué puedo hacer por ti?",
+            "¿Cómo va eso?"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "context": {
+        "nodo": "bienvenido",
+        "endall": "no"
+      },
+      "metadata": {},
+      "conditions": "welcome",
+      "dialog_node": "Bienvenido"
+    }
+  ],
+  "workspace_id": "df8e5884-e00d-4fe0-9ea2-14f2ff56bcfe",
+  "counterexamples": [],
+  "learning_opt_out": false,
+  "status": "Available"
+}
