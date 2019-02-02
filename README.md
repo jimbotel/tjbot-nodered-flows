@@ -5,7 +5,7 @@ These node-red flows are used in a Spanish version of the TJBot "Activity Kit", 
 
 ## Bienvenida (welcome)
  
-This flow is automatically executed once when node-red starts. It checks raspberry's hostname and it synthesizes an audio message giving this information. It also checks the main IP address and plays it back. For this second task, another flow (Dime IP) is invoked. This way we show the concept of "wiring flows" ("link" node). 
+This flow ([01.bienvenida.json](flows/01.bienvenida.json)) is automatically executed once when node-red starts. It checks raspberry's hostname and it synthesizes an audio message giving this information. It also checks the main IP address and plays it back. For this second task, another flow (Dime IP) is invoked. This way we show the concept of "wiring flows" ("link" node). 
 
 For example, if the student TJBot's hostname is "equipotj01" and the IP address is 192.168.1.105, the audio played will be:
 
@@ -23,7 +23,7 @@ Flow dependencies:
 
 ## Dime IP (give my IP)
 
-The purpose of this flow is explained above. The flow is designed so that the audio message reporting the IP address can be repeated several times (by default it is only played once) to give additional opportunities to the student of taking note of the IP address. It also introduces the use of variables and the "for loop" in JavaScript. 
+The purpose of this flow ([02.dime.ip.json](flows/02.dime.ip.json)) is explained above. The flow is designed so that the audio message reporting the IP address can be repeated several times (by default it is only played once) to give additional opportunities to the student of taking note of the IP address. It also introduces the use of variables and the "for loop" in JavaScript. 
 
 Flow dependencies:
 * [espeak](http://espeak.sourceforge.net/)(see above)
@@ -32,7 +32,7 @@ Flow dependencies:
 
 ## Mover brazo (move arm)
 
-This flow shows how to move TJBot's arm (servomotor). In this and other flows we use Jean Carl TJBot's nodes (see "dependencies" section). They are very robust and easy to use. 
+This flow ([03.mover-brazo.json](flows/03.mover-brazo.json)) shows how to move TJBot's arm (servomotor). In this and other flows we use Jean Carl TJBot's nodes (see "dependencies" section). They are very robust and easy to use. 
 The flow can be activated manually using the "inject" node, or it can also be accessed via web, for example: http://127.0.0.1:1880/mueve , using the loopback IP address (the assigned IP address is also valid). The flow introduces the "http in", "template" and "http response" nodes with this very simple example.
 
 Flow dependencies:
@@ -42,7 +42,7 @@ Flow dependencies:
 
 ## S. Hawking
 
-This flow is a test bench to play with command invocation using espeak to synthesize speech and aplay to reproduce audio files.
+This flow ([05.s.hawking.json](flows/05.s.hawking.json)) is a test bench to play with command invocation using espeak to synthesize speech and aplay to reproduce audio files.
 
 It shows command options to reproduce audio to a USB speaker or a bluetooth one, and it encourages students to explore other options (e.g. setting the language, speed, pitch, etc).
 
@@ -53,7 +53,7 @@ Flow dependencies:
 
 ## Loro (parrot)
 
-This flow uses Watson Speech to Text service to convert audio input captured from the microphone into text, and then it plays this text back through the speaker using Watson Text to Speech service. The flow introduces a feedback mechanism to stop "listening" once some text has been recognized. 
+This flow ([06.loro.json](flows/06.loro.json)) uses Watson Speech to Text service to convert audio input captured from the microphone into text, and then it plays this text back through the speaker using Watson Text to Speech service. The flow introduces a feedback mechanism to stop "listening" once some text has been recognized. 
 
 Flow dependencies:
 * [Jean Carl's node-red-contrib-tjbot](https://github.com/jeancarl/node-red-contrib-tjbot): nodes "tjbot-listen" and "tjbot-speak"
@@ -62,7 +62,7 @@ Flow dependencies:
 
 ## LED test 
 
-This flow is basically one of the examples from Jean Carl. It sets a color on the LED and then after a few seconds it turns it off. 
+This flow ([07.led.test.json](flows/07.led.test.json)) is basically one of the examples from Jean Carl. It sets a color on the LED and then after a few seconds it turns it off. 
 
 Flow dependencies:
 * [Jean Carl's node-red-contrib-tjbot](https://github.com/jeancarl/node-red-contrib-tjbot): nodes "tjbot-shine"
@@ -71,7 +71,7 @@ Flow dependencies:
 
 ## LED voz (LED controlled via voice) 
 
-This flow listens to the color request (in Spanish) and then set the LED color accordingly. The flow combines Watson Speech to Text to capture the request and Watson Language Translator services to translate the color name from Spanish to English.
+This flow ([08.led.voz.json](flows/08.led.voz.json)) listens to the color request (in Spanish) and then set the LED color accordingly. The flow combines Watson Speech to Text to capture the request and Watson Language Translator services to translate the color name from Spanish to English.
 
 Flow dependencies:
 * [Jean Carl's node-red-contrib-tjbot](https://github.com/jeancarl/node-red-contrib-tjbot): nodes "tjbot-listen", "tjbot-translate" and "tjbot-shine"
@@ -80,7 +80,7 @@ Flow dependencies:
 
 ## Reconocimiento de imagen (image recognition) 
 
-This flow is also one of the examples from Jean Carl. It takes a photo using the Raspberry camera and analyzes it using Watson Visual Recognition service.
+This flow ([09.reco.imagen.json](flows/09.reco.imagen.json)) is also one of the examples from Jean Carl. It takes a photo using the Raspberry camera and analyzes it using Watson Visual Recognition service.
 
 Flow dependencies:
 * [Jean Carl's node-red-contrib-tjbot](https://github.com/jeancarl/node-red-contrib-tjbot): node "tjbot-see"
@@ -89,7 +89,7 @@ Flow dependencies:
 
 ## Hacer una foto (take a photo)
 
-This flow implements a web page that takes a photo using the Raspberry camera and then displays it on the same page.
+This flow ([10.hacer.foto.json](flows/10.hacer.foto.json)) implements a web page that takes a photo using the Raspberry camera and then displays it on the same page.
 Visit http://127.0.0.1:1880/foto (or the raspberry IP address).
 
 Flow dependencies:
@@ -99,13 +99,13 @@ Flow dependencies:
 
 ## Conversación (conversation)
 
-This is the most complex flow of the series. It mimics the way "smart speakers" (like Amazon Echo or Google Home) works. 
-It performs hotword ("Hola, tjbot") detection locally on the raspberry. When the hotword is detected, it carries out a conversation using Watson services: Speech to Text, Watson Assistant and Text to Speech. 
+This ([12.conversa.json](flows/12.conversa.json)) is the most complex flow of the series. It mimics the way "smart speakers" (like Amazon Echo or Google Home) works. 
+It performs hotword ("Hola, tjbot") detection locally on the raspberry. When the hotword is detected, it carries out a conversation ([skill-workspace-tjbot.json](flows/skill-workspace-tjbot.json])) using Watson services: Speech to Text, Watson Assistant and Text to Speech. 
 The flow is explained in one of the presentations and the students learn how to customize the conversation to their own needs.
 
 This video shows an example of the conversation:
 
-[![link to a full video that shows the flow in action](https://img.youtube.com/vi/Loob-zuiWGA/0.jpg)](https://youtu.be/Loob-zuiWGA)
+[![link to a youtube video that shows the flow in action](https://img.youtube.com/vi/Loob-zuiWGA/0.jpg)](https://youtu.be/Loob-zuiWGA)
 
 Flow dependencies:
 * [node-red-contrib-micropi](https://flows.nodered.org/node/node-red-contrib-micropi). It allows recording and streaming audio from an usb microphone connected to a Raspberry Pi in Node-Red.
