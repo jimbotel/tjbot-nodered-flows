@@ -1,5 +1,12 @@
 [
     {
+        "id": "cc5cd94d.fc1da8",
+        "type": "tab",
+        "label": "Conversa bueno",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "3f427d3d.28fa3a",
         "type": "tjbot-converse",
         "z": "cc5cd94d.fc1da8",
@@ -248,10 +255,10 @@
         "id": "349a4a3c.ee1f6e",
         "type": "comment",
         "z": "cc5cd94d.fc1da8",
-        "name": "Dependencias de este flujo: micropi, snowboy, tjbot",
+        "name": "Dependencies: micropi, snowboy, tjbot",
         "info": "Nodos necesarios para ejecutar este flujo\nque no vienen \"de serie\":\n--------------\nNodo \"Micro Pi\" (node-red-contrib-micropi)\nFormas de instalar: \n1) desde linea de comandos:\n  $ cd ~/.node-red\n  $ sudo npm install node-red-contrib-micropi\ny reiniciar el servicio Node-RED\n\n2) Instalarlo desde Node-RED (Manage palette)\n--------------\nNodo \"Snowboy\" (node-red-contrib-snowboy)\n\nOJO: antes, instalar atlas matrix computinglibrary:\n $ sudo apt-get -y install libatlas-base-dev\n(hace falta para snowboy)\n\nFormas de instalar: \n1) desde linea de comandos:\n  $ cd ~/.node-red\n  $ sudo npm install node-red-contrib-snowboy\ny reiniciar el servicio Node-RED\n\n2) Instalarlo desde Node-RED (Manage palette)\n--------------\n",
-        "x": 1110,
-        "y": 780,
+        "x": 150,
+        "y": 20,
         "wires": []
     },
     {
@@ -264,7 +271,7 @@
         "payloadType": "bool",
         "repeat": "",
         "crontab": "",
-        "once": true,
+        "once": false,
         "onceDelay": "20",
         "x": 180,
         "y": 160,
@@ -480,8 +487,8 @@
         "z": "cc5cd94d.fc1da8",
         "name": "si no reconoce nada en unos segundos, envía \"adios\"",
         "info": "",
-        "x": 420,
-        "y": 780,
+        "x": 920,
+        "y": 740,
         "wires": []
     },
     {
@@ -664,7 +671,7 @@
         "timer": "",
         "oldrc": false,
         "name": "frase inicial",
-        "x": 370,
+        "x": 390,
         "y": 40,
         "wires": [
             [

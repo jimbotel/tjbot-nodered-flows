@@ -1,5 +1,12 @@
 [
     {
+        "id": "5a13d4e8.01419c",
+        "type": "tab",
+        "label": "Loro",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "fd5052f3.3f9fb",
         "type": "tjbot-listen",
         "z": "5a13d4e8.01419c",

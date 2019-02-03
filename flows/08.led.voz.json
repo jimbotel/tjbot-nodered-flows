@@ -1,5 +1,12 @@
 [
     {
+        "id": "c521ae8.162d35",
+        "type": "tab",
+        "label": "LED-voz",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "99c759ec.e39438",
         "type": "tjbot-shine",
         "z": "c521ae8.162d35",

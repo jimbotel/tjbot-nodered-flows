@@ -1,5 +1,12 @@
 [
     {
+        "id": "3c64fd83.1bf942",
+        "type": "tab",
+        "label": "Bienvenida",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "6ee186ec.d09058",
         "type": "inject",
         "z": "3c64fd83.1bf942",

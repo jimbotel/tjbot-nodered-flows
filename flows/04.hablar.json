@@ -1,5 +1,12 @@
 [
     {
+        "id": "bbaaea66.0b5ec8",
+        "type": "tab",
+        "label": "Hablar",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "a9561624.e2bfe8",
         "type": "inject",
         "z": "bbaaea66.0b5ec8",

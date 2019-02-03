@@ -1,5 +1,12 @@
 [
     {
+        "id": "d70f897c.61fe88",
+        "type": "tab",
+        "label": "Hacer foto",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "327ccb89.d93394",
         "type": "tjbot-see",
         "z": "d70f897c.61fe88",

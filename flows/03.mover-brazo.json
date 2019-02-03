@@ -1,5 +1,12 @@
 [
     {
+        "id": "f92df7e2.14b7a8",
+        "type": "tab",
+        "label": "Mover-brazo",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "f2f56bf3.24d0f8",
         "type": "inject",
         "z": "f92df7e2.14b7a8",

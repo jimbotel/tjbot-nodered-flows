@@ -1,5 +1,12 @@
 [
     {
+        "id": "4c09da13.a75c34",
+        "type": "tab",
+        "label": "S.Hawking",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "46e81c8.09034e4",
         "type": "inject",
         "z": "4c09da13.a75c34",

@@ -1,5 +1,12 @@
 [
     {
+        "id": "a3263050.91663",
+        "type": "tab",
+        "label": "LED test",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "7ddfbb37.928114",
         "type": "inject",
         "z": "a3263050.91663",

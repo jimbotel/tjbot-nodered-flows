@@ -1,5 +1,12 @@
 [
     {
+        "id": "bca5952c.cefe28",
+        "type": "tab",
+        "label": "Reco-imagen",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "70a3752b.69f3cc",
         "type": "tjbot-see",
         "z": "bca5952c.cefe28",
@@ -14,7 +21,7 @@
         "y": 200,
         "wires": [
             [
-                "3cdb18c8.206a48"
+                "cc9ae0f3.b1604"
             ]
         ]
     },
@@ -47,8 +54,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "true",
-        "x": 620,
+        "complete": "payload",
+        "x": 710,
         "y": 200,
         "wires": []
     },
@@ -61,6 +68,22 @@
         "x": 210,
         "y": 120,
         "wires": []
+    },
+    {
+        "id": "cc9ae0f3.b1604",
+        "type": "function",
+        "z": "bca5952c.cefe28",
+        "name": "",
+        "func": "msg.payload = 'Watson sees: '+msg.payload.map(function(c) {\n    return c['class'];\n}).join(', ');\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 550,
+        "y": 200,
+        "wires": [
+            [
+                "3cdb18c8.206a48"
+            ]
+        ]
     },
     {
         "id": "e551859e.787188",
