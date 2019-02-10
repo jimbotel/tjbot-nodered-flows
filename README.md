@@ -100,7 +100,7 @@ Flow dependencies:
 ## Conversación (conversation)
 
 This ([12.conversa.json](flows/12.conversa.json)) is the most complex flow of the series. It mimics the way "smart speakers" (like Amazon Echo or Google Home) works. 
-It performs hotword ("Hola, tjbot") detection locally on the raspberry. When the hotword is detected, it carries out a conversation ([skill-workspace-tjbot.json](flows/skill-workspace-tjbot.json])) using Watson services: Speech to Text, Watson Assistant and Text to Speech. 
+It performs hotword ("Hola, tjbot") detection locally on the raspberry. When the hotword is detected, it carries out a conversation ([skill-workspace-tjbot.json](flows/skill-workspace-tjbot.json)) using Watson services: Speech to Text, Watson Assistant and Text to Speech. 
 The flow is explained in one of the presentations and the students learn how to customize the conversation to their own needs.
 
 This video shows an example of the conversation:
