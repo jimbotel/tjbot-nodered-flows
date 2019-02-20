@@ -310,6 +310,28 @@
   "description": "",
   "dialog_nodes": [
     {
+      "type": "standard",
+      "title": "My welcome",
+      "output": {
+        "text": {
+          "values": [
+            "¿Qué hay de nuevo viejo?",
+            "Hola colega, ¿qué puedo hacer por ti?",
+            "¿Cómo va eso?"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "parent": "node_1_1550614049831",
+      "context": {
+        "nodo": "mywelcome",
+        "endall": "no"
+      },
+      "metadata": {},
+      "conditions": "true",
+      "dialog_node": "node_2_1550648110203"
+    },
+    {
       "type": "response_condition",
       "output": {
         "text": {
@@ -346,6 +368,11 @@
         "endall": "si"
       },
       "metadata": {},
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1550614049831"
+      },
       "conditions": "#Adios",
       "dialog_node": "node_6_1528221101210",
       "previous_sibling": "node_7_1528221192095"
@@ -588,6 +615,30 @@
     },
     {
       "type": "standard",
+      "title": "Conversation Start",
+      "output": {
+        "text": {
+          "values": [],
+          "selection_policy": "sequential"
+        }
+      },
+      "context": {
+        "nodo": "start",
+        "endall": "no"
+      },
+      "metadata": {},
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "Bienvenido"
+      },
+      "conditions": "conversation_start",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_2_1549642497848",
+      "previous_sibling": "node_1_1550614049831"
+    },
+    {
+      "type": "standard",
       "title": "Ayuda",
       "output": {
         "text": {
@@ -697,7 +748,26 @@
       },
       "metadata": {},
       "conditions": "welcome",
-      "dialog_node": "Bienvenido"
+      "dialog_node": "Bienvenido",
+      "previous_sibling": "node_2_1549642497848"
+    },
+    {
+      "type": "standard",
+      "title": "Start again and clear context",
+      "output": {
+        "text": {
+          "values": [],
+          "selection_policy": "sequential"
+        },
+        "context_eraser": "<? context.clear() ?>"
+      },
+      "context": {
+        "nodo": "restart"
+      },
+      "metadata": {},
+      "conditions": "false",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_1_1550614049831"
     }
   ],
   "workspace_id": "df8e5884-e00d-4fe0-9ea2-14f2ff56bcfe",

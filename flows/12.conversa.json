@@ -1,30 +1,30 @@
 [
     {
-        "id": "cc5cd94d.fc1da8",
+        "id": "f64b6cbe.5695b",
         "type": "tab",
         "label": "Conversa bueno",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "3f427d3d.28fa3a",
+        "id": "683a1421.6aa7bc",
         "type": "tjbot-converse",
-        "z": "cc5cd94d.fc1da8",
-        "botId": "e551859e.787188",
+        "z": "f64b6cbe.5695b",
+        "botId": "65d085a1.ccc73c",
         "name": "",
         "x": 520,
         "y": 500,
         "wires": [
             [
-                "7acd1c56.aad6c4",
-                "c416266a.2b1c68"
+                "898b22e4.d22fa",
+                "e44edab8.005188"
             ]
         ]
     },
     {
-        "id": "b208e0b9.316f88",
+        "id": "78c29b40.221474",
         "type": "debug",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "dialogo",
         "active": false,
         "tosidebar": true,
@@ -36,25 +36,25 @@
         "wires": []
     },
     {
-        "id": "96400f6d.f93438",
+        "id": "c4c3fa6c.f19768",
         "type": "tjbot-listen",
-        "z": "cc5cd94d.fc1da8",
-        "botId": "e551859e.787188",
+        "z": "f64b6cbe.5695b",
+        "botId": "65d085a1.ccc73c",
         "name": "",
         "x": 330,
         "y": 500,
         "wires": [
             [
-                "3f427d3d.28fa3a",
-                "81e36aa6.e39be8",
-                "2ad1da0b.1ce546"
+                "683a1421.6aa7bc",
+                "7583f84d.041af8",
+                "f1fa5914.14bcf8"
             ]
         ]
     },
     {
-        "id": "81e36aa6.e39be8",
+        "id": "7583f84d.041af8",
         "type": "debug",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "reconocido",
         "active": true,
         "tosidebar": true,
@@ -66,9 +66,9 @@
         "wires": []
     },
     {
-        "id": "339ee0f2.2adc88",
+        "id": "e52c9d71.3545e",
         "type": "inject",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "",
         "topic": "",
         "payload": "stop",
@@ -81,14 +81,14 @@
         "y": 400,
         "wires": [
             [
-                "254280de.15cdd"
+                "55a9bcad.6b8fa4"
             ]
         ]
     },
     {
-        "id": "2ad1da0b.1ce546",
+        "id": "f1fa5914.14bcf8",
         "type": "function",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "pausa",
         "func": "msg.reset = 1;\nmsg.mode = \"pause\";\nmsg.color = \"Black\";\nreturn msg;",
         "outputs": 1,
@@ -97,66 +97,35 @@
         "y": 580,
         "wires": [
             [
-                "96400f6d.f93438",
-                "11296da3.5b9f0a",
-                "993b4c45.a13398"
+                "c4c3fa6c.f19768",
+                "1843171f.b9b099",
+                "d7d5eb35.ddbbb8"
             ]
         ]
     },
     {
-        "id": "9d259448.7fe938",
+        "id": "aed098c6.ae05c8",
         "type": "function",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "sigue",
-        "func": "// if( msg.response.object.intents[0].intent == \"Adios\") {\n// if( msg.response.object.output.nodes_visited[0] == \"Bienvenido\") {\nif( msg.response.object.context.nodo == \"bienvenido\") {\n    msg.mode = \"start\"; \n    msg.color = \"Green\";\n} \n//else if( msg.response.object.output.nodes_visited[0] == \"Adios\") {\nelse if( msg.response.object.context.nodo == \"adios\") {\n    msg.mode = \"stop\";\n    msg.motion = \"wave\";\n    msg.color = \"Black\";\n}\nelse {\n    msg.mode = \"resume\";\n    msg.color = \"Green\";\n}\nreturn msg;\n",
+        "func": "// if( msg.response.object.intents[0].intent == \"Adios\") {\n// if( msg.response.object.output.nodes_visited[0] == \"Bienvenido\") {\n// var nodos = ['adios', 'restart'];\nif( msg.response.object.context.nodo == \"bienvenido\") {\n    msg.mode = \"start\"; \n    msg.color = \"Green\";\n} \n//else if( msg.response.object.output.nodes_visited[0] == \"Adios\") {\n//else if( msg.response.object.context.nodo == \"adios\") {\n// else if( nodos.indexOf(msg.response.object.context.nodo) !== -1 || typeof(msg.response.object.context.nodo) == 'undefined') {\nelse if( msg.response.object.context.nodo == \"adios\" || typeof(msg.response.object.context.nodo) == 'undefined') {\n    msg.mode = \"stop\";\n    msg.motion = \"wave\";\n    msg.color = \"Black\";\n}\nelse {\n    msg.mode = \"resume\";\n    msg.color = \"Green\";\n}\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "x": 1070,
         "y": 500,
         "wires": [
             [
-                "67b03cbd.c9746c",
-                "ccf3313f.5e196",
-                "5b147b4f.ea218c"
+                "889c6a90.e5ef68",
+                "cfa5b278.53a4c",
+                "efae528e.b3aaa",
+                "81d02651.ecd"
             ]
         ]
     },
     {
-        "id": "b08da717.70b8d",
-        "type": "http request",
-        "z": "cc5cd94d.fc1da8",
-        "name": "inicializa",
-        "method": "POST",
-        "ret": "obj",
-        "url": "",
-        "tls": "",
-        "x": 560,
-        "y": 280,
-        "wires": [
-            [
-                "a3a288ad.705a1",
-                "af8f7064.6b7eb"
-            ]
-        ]
-    },
-    {
-        "id": "a3a288ad.705a1",
-        "type": "debug",
-        "z": "cc5cd94d.fc1da8",
-        "name": "texto inicial",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "x": 730,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "254280de.15cdd",
+        "id": "55a9bcad.6b8fa4",
         "type": "change",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "mode stop",
         "rules": [
             {
@@ -183,28 +152,28 @@
         "y": 400,
         "wires": [
             [
-                "96400f6d.f93438"
+                "c4c3fa6c.f19768"
             ]
         ]
     },
     {
-        "id": "7acd1c56.aad6c4",
+        "id": "898b22e4.d22fa",
         "type": "debug",
-        "z": "cc5cd94d.fc1da8",
-        "name": "",
+        "z": "f64b6cbe.5695b",
+        "name": "conversa",
         "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "response",
-        "x": 760,
+        "complete": "true",
+        "x": 740,
         "y": 640,
         "wires": []
     },
     {
-        "id": "c416266a.2b1c68",
+        "id": "e44edab8.005188",
         "type": "function",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "une respuestas",
         "func": "msg.payload = msg.response.object.output.text.join(\" \");\nreturn msg;",
         "outputs": 1,
@@ -213,16 +182,16 @@
         "y": 500,
         "wires": [
             [
-                "b208e0b9.316f88",
-                "94b55651.35187"
+                "78c29b40.221474",
+                "65fa200e.c664d"
             ]
         ]
     },
     {
-        "id": "94b55651.35187",
+        "id": "65fa200e.c664d",
         "type": "tjbot-speak",
-        "z": "cc5cd94d.fc1da8",
-        "botId": "e551859e.787188",
+        "z": "f64b6cbe.5695b",
+        "botId": "65d085a1.ccc73c",
         "mode": "speak",
         "payload": "",
         "name": "",
@@ -230,31 +199,15 @@
         "y": 500,
         "wires": [
             [
-                "d6b5b6ef.78ebf8",
-                "9d259448.7fe938"
+                "829c250b.656d08",
+                "aed098c6.ae05c8"
             ]
         ]
     },
     {
-        "id": "af8f7064.6b7eb",
-        "type": "function",
-        "z": "cc5cd94d.fc1da8",
-        "name": "respuesta",
-        "func": "msg.response = {};\nmsg.response.object = msg.payload;\nvar str1 = msg.payload.output.text.join(\" \");\nmsg.payload  = str1;\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 720,
-        "y": 380,
-        "wires": [
-            [
-                "94b55651.35187"
-            ]
-        ]
-    },
-    {
-        "id": "349a4a3c.ee1f6e",
+        "id": "5d6b552b.7df72c",
         "type": "comment",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "Dependencies: micropi, snowboy, tjbot",
         "info": "Nodos necesarios para ejecutar este flujo\nque no vienen \"de serie\":\n--------------\nNodo \"Micro Pi\" (node-red-contrib-micropi)\nFormas de instalar: \n1) desde linea de comandos:\n  $ cd ~/.node-red\n  $ sudo npm install node-red-contrib-micropi\ny reiniciar el servicio Node-RED\n\n2) Instalarlo desde Node-RED (Manage palette)\n--------------\nNodo \"Snowboy\" (node-red-contrib-snowboy)\n\nOJO: antes, instalar atlas matrix computinglibrary:\n $ sudo apt-get -y install libatlas-base-dev\n(hace falta para snowboy)\n\nFormas de instalar: \n1) desde linea de comandos:\n  $ cd ~/.node-red\n  $ sudo npm install node-red-contrib-snowboy\ny reiniciar el servicio Node-RED\n\n2) Instalarlo desde Node-RED (Manage palette)\n--------------\n",
         "x": 150,
@@ -262,9 +215,9 @@
         "wires": []
     },
     {
-        "id": "85496520.806d08",
+        "id": "5d68e33e.f4288c",
         "type": "inject",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "Activa deteccion de hotword",
         "topic": "",
         "payload": "true",
@@ -277,15 +230,15 @@
         "y": 160,
         "wires": [
             [
-                "ce2ed1df.a9936",
-                "d232b4be.76dff8"
+                "6c60facd.4e6754",
+                "37bd8387.f90c0c"
             ]
         ]
     },
     {
-        "id": "315c4e3e.c3eb1a",
+        "id": "1dc9a54b.2cf6db",
         "type": "inject",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "Desactiva deteccion de hotword",
         "topic": "",
         "payload": "false",
@@ -298,14 +251,14 @@
         "y": 200,
         "wires": [
             [
-                "162a2dfe.533c02"
+                "3f490b3.8f269f4"
             ]
         ]
     },
     {
-        "id": "3dade9b0.9ec516",
+        "id": "8d420772.afe2d8",
         "type": "microPi",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "microPi",
         "filename": "/dev/null",
         "domain": "http://localhost:1880/getAudio",
@@ -321,16 +274,16 @@
         "y": 200,
         "wires": [
             [
-                "52e5cb16.27d82c"
+                "3132ea97.d2dc56"
             ],
             [],
             []
         ]
     },
     {
-        "id": "162a2dfe.533c02",
+        "id": "3f490b3.8f269f4",
         "type": "change",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "para",
         "rules": [
             {
@@ -357,15 +310,15 @@
         "y": 140,
         "wires": [
             [
-                "3dade9b0.9ec516",
-                "b5e131b0.9d3e08"
+                "8d420772.afe2d8",
+                "ac80c5bd.b3d448"
             ]
         ]
     },
     {
-        "id": "52e5cb16.27d82c",
+        "id": "3132ea97.d2dc56",
         "type": "Snowboy",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "Hola TJBot",
         "detectorFile": "/home/pi/.node-red/node_modules/snowboy/resources/common.res",
         "models": [
@@ -390,50 +343,50 @@
         "y": 200,
         "wires": [
             [
-                "162a2dfe.533c02",
-                "780276c8.06d93",
-                "aefbe87d.e5a098"
+                "3f490b3.8f269f4",
+                "dad85907.d69758",
+                "a6943968.1aae28"
             ],
             [
-                "162a2dfe.533c02",
-                "690cec2.0935894"
+                "3f490b3.8f269f4",
+                "5752087a.33b658"
             ]
         ]
     },
     {
-        "id": "67b03cbd.c9746c",
+        "id": "889c6a90.e5ef68",
         "type": "link out",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "escucha",
         "links": [
-            "ec41fab3.41dd1"
+            "e3b50cd7.8699a"
         ],
         "x": 1175,
         "y": 540,
         "wires": []
     },
     {
-        "id": "ec41fab3.41dd1",
+        "id": "e3b50cd7.8699a",
         "type": "link in",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "start",
         "links": [
-            "67b03cbd.c9746c"
+            "889c6a90.e5ef68"
         ],
         "x": 135,
         "y": 540,
         "wires": [
             [
-                "96400f6d.f93438",
-                "f0bbd66.fe79328",
-                "993b4c45.a13398"
+                "c4c3fa6c.f19768",
+                "2e924033.fa5db",
+                "d7d5eb35.ddbbb8"
             ]
         ]
     },
     {
-        "id": "780276c8.06d93",
+        "id": "dad85907.d69758",
         "type": "debug",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "vacio",
         "active": false,
         "tosidebar": true,
@@ -445,9 +398,9 @@
         "wires": []
     },
     {
-        "id": "d6b5b6ef.78ebf8",
+        "id": "829c250b.656d08",
         "type": "debug",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "dialogo",
         "active": true,
         "tosidebar": true,
@@ -459,9 +412,9 @@
         "wires": []
     },
     {
-        "id": "11296da3.5b9f0a",
+        "id": "1843171f.b9b099",
         "type": "trigger",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "op1": "",
         "op2": "true",
         "op1type": "nul",
@@ -476,15 +429,15 @@
         "y": 740,
         "wires": [
             [
-                "fe3d5a88.9b2868",
-                "2ad1da0b.1ce546"
+                "98877efd.b6051",
+                "f1fa5914.14bcf8"
             ]
         ]
     },
     {
-        "id": "87682e35.1a8ae",
+        "id": "2e9ca2af.1992de",
         "type": "comment",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "si no reconoce nada en unos segundos, envía \"adios\"",
         "info": "",
         "x": 920,
@@ -492,26 +445,26 @@
         "wires": []
     },
     {
-        "id": "5d2c1efa.a10c1",
+        "id": "b0da5de.12368a",
         "type": "link in",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "hotword",
         "links": [
-            "f817491c.ad984"
+            "1dccc059.2626d"
         ],
         "x": 435,
         "y": 220,
         "wires": [
             [
-                "3dade9b0.9ec516",
-                "16815617.bbf2da"
+                "8d420772.afe2d8",
+                "6080d71b.f8ad58"
             ]
         ]
     },
     {
-        "id": "ccf3313f.5e196",
+        "id": "cfa5b278.53a4c",
         "type": "function",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "activa hotword",
         "func": "if( msg.mode == \"stop\") {\n    msg.payload = true;\n} else {\n    msg.payload = false;\n}\nreturn msg;",
         "outputs": 1,
@@ -520,26 +473,26 @@
         "y": 340,
         "wires": [
             [
-                "f817491c.ad984"
+                "1dccc059.2626d"
             ]
         ]
     },
     {
-        "id": "f817491c.ad984",
+        "id": "1dccc059.2626d",
         "type": "link out",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "a hotword",
         "links": [
-            "5d2c1efa.a10c1"
+            "b0da5de.12368a"
         ],
         "x": 1235,
         "y": 340,
         "wires": []
     },
     {
-        "id": "731f47e6.3de368",
+        "id": "a5e2a507.8996c8",
         "type": "debug",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "trigger",
         "active": false,
         "tosidebar": true,
@@ -551,9 +504,9 @@
         "wires": []
     },
     {
-        "id": "fe3d5a88.9b2868",
+        "id": "98877efd.b6051",
         "type": "function",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "envia adios",
         "func": "var newmsg = {};\nmsg = newmsg;\nmsg.payload = \"adios\";\nreturn msg;",
         "outputs": 1,
@@ -562,15 +515,15 @@
         "y": 740,
         "wires": [
             [
-                "731f47e6.3de368",
-                "3f427d3d.28fa3a"
+                "a5e2a507.8996c8",
+                "683a1421.6aa7bc"
             ]
         ]
     },
     {
-        "id": "f0bbd66.fe79328",
+        "id": "2e924033.fa5db",
         "type": "switch",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "activa trigger",
         "property": "mode",
         "propertyType": "msg",
@@ -593,17 +546,17 @@
         "y": 640,
         "wires": [
             [
-                "11296da3.5b9f0a"
+                "1843171f.b9b099"
             ],
             [
-                "11296da3.5b9f0a"
+                "1843171f.b9b099"
             ]
         ]
     },
     {
-        "id": "7bb0f981.832248",
+        "id": "c1efba6c.25d8a8",
         "type": "comment",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "si se reconoce adios, activa hotword",
         "info": "",
         "x": 1160,
@@ -611,9 +564,9 @@
         "wires": []
     },
     {
-        "id": "a8e31b33.a74308",
+        "id": "7a710423.adb11c",
         "type": "comment",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "si hay varias respuestas, las une",
         "info": "",
         "x": 690,
@@ -621,29 +574,19 @@
         "wires": []
     },
     {
-        "id": "ff33e96.2165f98",
+        "id": "3bc378ee.296c98",
         "type": "comment",
-        "z": "cc5cd94d.fc1da8",
-        "name": "INDICAR AQUI EL WORKSPACE ID !!",
-        "info": "",
-        "x": 310,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "16e46ab9.7f2db5",
-        "type": "comment",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "detección de hotword",
         "info": "",
-        "x": 940,
+        "x": 800,
         "y": 260,
         "wires": []
     },
     {
-        "id": "92093fed.b7e138",
+        "id": "7c4c12e0.78d9fc",
         "type": "comment",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "parada manual",
         "info": "",
         "x": 100,
@@ -651,9 +594,9 @@
         "wires": []
     },
     {
-        "id": "6d35329f.abf5d4",
+        "id": "a4fd2d2c.33dea",
         "type": "comment",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "parada manual",
         "info": "",
         "x": 120,
@@ -661,9 +604,9 @@
         "wires": []
     },
     {
-        "id": "ce2ed1df.a9936",
+        "id": "6c60facd.4e6754",
         "type": "exec",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "command": "/usr/bin/aplay",
         "addpay": false,
         "append": " /home/pi/audio/fraseinicial.wav",
@@ -675,20 +618,20 @@
         "y": 40,
         "wires": [
             [
-                "703cb156.8e1ca8"
+                "1c11ab8d.cfa6f4"
             ],
             [
-                "703cb156.8e1ca8"
+                "1c11ab8d.cfa6f4"
             ],
             [
-                "703cb156.8e1ca8"
+                "1c11ab8d.cfa6f4"
             ]
         ]
     },
     {
-        "id": "703cb156.8e1ca8",
+        "id": "1c11ab8d.cfa6f4",
         "type": "debug",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -700,9 +643,9 @@
         "wires": []
     },
     {
-        "id": "8b4314c2.27b7",
+        "id": "9c894c11.e3818",
         "type": "comment",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "Inicio",
         "info": "",
         "x": 90,
@@ -710,9 +653,9 @@
         "wires": []
     },
     {
-        "id": "d232b4be.76dff8",
+        "id": "37bd8387.f90c0c",
         "type": "delay",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "",
         "pauseType": "delay",
         "timeout": "3",
@@ -728,17 +671,17 @@
         "y": 160,
         "wires": [
             [
-                "3dade9b0.9ec516",
-                "16815617.bbf2da",
-                "7d9347e9.bd7d"
+                "8d420772.afe2d8",
+                "6080d71b.f8ad58",
+                "6978315a.82d4a"
             ]
         ]
     },
     {
-        "id": "7d9347e9.bd7d",
+        "id": "6978315a.82d4a",
         "type": "tjbot-wave",
-        "z": "cc5cd94d.fc1da8",
-        "botId": "e551859e.787188",
+        "z": "f64b6cbe.5695b",
+        "botId": "65d085a1.ccc73c",
         "motion": "wave",
         "name": "Mover el brazo",
         "x": 540,
@@ -746,10 +689,10 @@
         "wires": []
     },
     {
-        "id": "5795ccf7.b52d2c",
+        "id": "9ee9d2d7.1e20a",
         "type": "tjbot-shine",
-        "z": "cc5cd94d.fc1da8",
-        "botId": "e551859e.787188",
+        "z": "f64b6cbe.5695b",
+        "botId": "65d085a1.ccc73c",
         "mode": "shine",
         "color": "msg.color",
         "duration": "2",
@@ -759,10 +702,10 @@
         "wires": []
     },
     {
-        "id": "5b147b4f.ea218c",
+        "id": "efae528e.b3aaa",
         "type": "tjbot-wave",
-        "z": "cc5cd94d.fc1da8",
-        "botId": "e551859e.787188",
+        "z": "f64b6cbe.5695b",
+        "botId": "65d085a1.ccc73c",
         "motion": "msg.motion",
         "name": "Mover el brazo",
         "x": 1240,
@@ -770,9 +713,9 @@
         "wires": []
     },
     {
-        "id": "993b4c45.a13398",
+        "id": "d7d5eb35.ddbbb8",
         "type": "function",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "color",
         "func": "var str1 =msg.color;\nvar newmsg = {};\nmsg = newmsg;\nmsg.color = str1;\nreturn msg;",
         "outputs": 1,
@@ -781,15 +724,15 @@
         "y": 700,
         "wires": [
             [
-                "5795ccf7.b52d2c"
+                "9ee9d2d7.1e20a"
             ]
         ]
     },
     {
-        "id": "6f7e12e6.1ceb3c",
+        "id": "c0c580ea.60986",
         "type": "tjbot-shine",
-        "z": "cc5cd94d.fc1da8",
-        "botId": "e551859e.787188",
+        "z": "f64b6cbe.5695b",
+        "botId": "65d085a1.ccc73c",
         "mode": "pulse",
         "color": "blue",
         "duration": "1.5",
@@ -799,9 +742,9 @@
         "wires": []
     },
     {
-        "id": "9b4dfcc1.302c18",
+        "id": "966a59a5.75fc18",
         "type": "debug",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "led intermitente",
         "active": false,
         "tosidebar": true,
@@ -813,9 +756,9 @@
         "wires": []
     },
     {
-        "id": "16815617.bbf2da",
+        "id": "6080d71b.f8ad58",
         "type": "switch",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "activa trigger",
         "property": "payload",
         "propertyType": "msg",
@@ -831,15 +774,15 @@
         "y": 100,
         "wires": [
             [
-                "b5e131b0.9d3e08",
-                "57526ae2.8efedc"
+                "ac80c5bd.b3d448",
+                "35bfb059.5671f"
             ]
         ]
     },
     {
-        "id": "b5e131b0.9d3e08",
+        "id": "ac80c5bd.b3d448",
         "type": "trigger",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "op1": "",
         "op2": "true",
         "op1type": "nul",
@@ -854,16 +797,16 @@
         "y": 80,
         "wires": [
             [
-                "c6f72fed.25a14",
-                "57526ae2.8efedc",
-                "9b4dfcc1.302c18"
+                "146d84a8.c71a7b",
+                "35bfb059.5671f",
+                "966a59a5.75fc18"
             ]
         ]
     },
     {
-        "id": "c6f72fed.25a14",
+        "id": "146d84a8.c71a7b",
         "type": "delay",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "",
         "pauseType": "delay",
         "timeout": "0",
@@ -879,14 +822,14 @@
         "y": 20,
         "wires": [
             [
-                "b5e131b0.9d3e08"
+                "ac80c5bd.b3d448"
             ]
         ]
     },
     {
-        "id": "57526ae2.8efedc",
+        "id": "35bfb059.5671f",
         "type": "function",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "name": "limpia",
         "func": "var newmsg = {};\nmsg = newmsg;\nmsg.payload = true;\nreturn msg;",
         "outputs": 1,
@@ -895,40 +838,14 @@
         "y": 100,
         "wires": [
             [
-                "6f7e12e6.1ceb3c"
+                "c0c580ea.60986"
             ]
         ]
     },
     {
-        "id": "690cec2.0935894",
-        "type": "function",
-        "z": "cc5cd94d.fc1da8",
-        "name": "http request",
-        "func": "var workspaceid = \"6605538e-fa96-43c2-9387-b532e00f862e\";\nmsg.url = \"https://gateway.watsonplatform.net/assistant/api/v1/workspaces/\" + workspaceid + \"/message?version=2018-02-16&nodes_visited_details=true\";\nmsg.headers = { \"Accept\" : \"application/json\",  \"Content-Type\": \"application/json\" };\nmsg.payload = {\"input\":{\"text\":\"\"},\"context\":{\"timezone\":\"Europe/Madrid\"},\"alternate_intents\":true};\nreturn msg;\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 390,
-        "y": 280,
-        "wires": [
-            [
-                "b08da717.70b8d"
-            ]
-        ]
-    },
-    {
-        "id": "370193b6.1ddcdc",
-        "type": "comment",
-        "z": "cc5cd94d.fc1da8",
-        "name": "Y AQUI USU / PASS DE ASSISTANT",
-        "info": "",
-        "x": 640,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "aefbe87d.e5a098",
+        "id": "a6943968.1aae28",
         "type": "exec",
-        "z": "cc5cd94d.fc1da8",
+        "z": "f64b6cbe.5695b",
         "command": "/usr/bin/aplay",
         "addpay": false,
         "append": " /home/pi/audio/parandoelflujo.wav",
@@ -945,7 +862,37 @@
         ]
     },
     {
-        "id": "e551859e.787188",
+        "id": "5752087a.33b658",
+        "type": "function",
+        "z": "f64b6cbe.5695b",
+        "name": "respuesta",
+        "func": "msg.payload  = '';\n//msg.response = {};\n//msg.response.object = {};\n//msg.response.object.context = {}\n//msg.response.object = msg.payload;\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 500,
+        "y": 400,
+        "wires": [
+            [
+                "683a1421.6aa7bc"
+            ]
+        ]
+    },
+    {
+        "id": "81d02651.ecd",
+        "type": "debug",
+        "z": "f64b6cbe.5695b",
+        "name": "sigue",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 1260,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "65d085a1.ccc73c",
         "type": "tjbot-config",
         "z": "",
         "botGender": "female",
